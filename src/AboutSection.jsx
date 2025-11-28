@@ -63,6 +63,10 @@ function AboutSection() {
                                         </div>
                                         <div className="flex items-start space-x-3">
                                             <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                                            <p className="text-gray-700">Mengenal industri game general</p>
+                                        </div>
+                                        <div className="flex items-start space-x-3">
+                                            <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                                             <p className="text-gray-700">Mengadakan turnamen game</p>
                                         </div>
                                         <div className="flex items-start space-x-3">
