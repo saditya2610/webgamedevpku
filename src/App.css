@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Press+Start+2P&display=swap');
+
+:root {
+  --color-primary-bg: #ffffff;
+  --color-neon-green: #00ff00;
+  --color-fuchsia: #ff00ff;
+  --color-deep-blue: #3b5b92;
+  --color-dark-text: #1f2937;
+  --color-light-gray: #e5e7eb;
+  --color-dark-accent-bg: #1a1a1a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--color-primary-bg);
+  background-image:
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(59, 91, 146, 0.08) 2px,
+      rgba(59, 91, 146, 0.08) 4px),
+    repeating-linear-gradient(90deg,
+      transparent,
+      transparent 2px,
+      rgba(59, 91, 146, 0.08) 2px,
+      rgba(59, 91, 146, 0.08) 4px);
+  background-size: 4px 4px;
+  animation: pixel-scroll 20s linear infinite;
+  color: var(--color-dark-text);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  display: block;
+  position: relative;
+}
+
+.full-width {
+  position: relative;
+  left: 0;
+  right: 0;
+  width: 100vw;
+}
+
+@keyframes pixel-scroll {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+.game-title,
+.pixel-text {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.neon-glow-fuchsia {
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+  border: 1px solid rgba(255, 0, 255, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.neon-glow-green {
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+  border: 1px solid rgba(0, 255, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.neon-glow-fuchsia:hover {
+  box-shadow: 0 0 25px var(--color-fuchsia);
+}
+
+.neon-glow-green:hover {
+  box-shadow: 0 0 25px var(--color-neon-green);
+}
+
+.pixel-icon {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  background-color: #111827;
+  border: 4px solid var(--color-deep-blue);
+  box-shadow: 4px 4px 0 0 var(--color-neon-green);
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pixel-icon-1 {
+  background-image: linear-gradient(90deg,
+      #111827 0,
+      #111827 8px,
+      #22c55e 8px,
+      #22c55e 16px,
+      #111827 16px,
+      #111827 48px,
+      #22c55e 48px,
+      #22c55e 56px,
+      #111827 56px,
+      #111827 100%);
+  background-size: 64px 64px;
+}
+
+.pixel-icon-2 {
+  background-image: linear-gradient(180deg,
+      #111827 0,
+      #111827 8px,
+      #22d3ee 8px,
+      #22d3ee 40px,
+      #111827 40px,
+      #111827 48px,
+      #f97316 48px,
+      #f97316 56px,
+      #111827 56px,
+      #111827 100%);
+  background-size: 64px 64px;
+}
+
+.pixel-icon-3 {
+  background-image: linear-gradient(180deg,
+      #111827 0,
+      #111827 8px,
+      #4f46e5 8px,
+      #4f46e5 24px,
+      #111827 24px,
+      #111827 40px,
+      #22c55e 40px,
+      #22c55e 48px,
+      #111827 48px,
+      #111827 100%);
+  background-size: 64px 64px;
+}
+
+.pixel-icon:hover {
+  animation: iconPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes iconPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 4px 4px 0 0 var(--color-neon-green);
+  }
+
+  100% {
+    transform: scale(1.05);
+    box-shadow: 6px 6px 0 0 var(--color-fuchsia);
+  }
+}
+
+@keyframes heroFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  }
+
+  50% {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 26px 55px rgba(0, 0, 0, 0.24);
+  }
+}
+
+@keyframes ctaPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes heroPixelDrift1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(12px, -10px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes heroPixelDrift2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-14px, 12px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes heroPixelDrift3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(10px, 8px) scale(1.08);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.qr-code-box {
+  border: 8px solid var(--color-deep-blue);
+  box-shadow: 6px 6px 0 0 var(--color-fuchsia);
+  padding: 10px;
+  background-color: var(--color-dark-accent-bg);
+  display: inline-block;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://placehold.co/1920x1080/DDDDDD/666666/png?text=GAME+BACKGROUND+ASSET');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.hero-section {
+  position: relative;
+}
+
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  transform-origin: center;
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+.hero-pixels {
+  position: absolute;
+  inset: -16px;
+  pointer-events: none;
+}
+
+.hero-pixel {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  opacity: 0.45;
+}
+
+.hero-pixel-1 {
+  top: 12%;
+  left: 6%;
+  background-color: var(--color-neon-green);
+  box-shadow: 0 0 16px rgba(0, 255, 0, 0.7);
+  animation: heroPixelDrift1 10s linear infinite;
+}
+
+.hero-pixel-2 {
+  bottom: 15%;
+  right: 8%;
+  background-color: var(--color-fuchsia);
+  box-shadow: 0 0 16px rgba(255, 0, 255, 0.7);
+  animation: heroPixelDrift2 12s linear infinite;
+}
+
+.hero-pixel-3 {
+  top: 18%;
+  right: 35%;
+  background-color: var(--color-deep-blue);
+  box-shadow: 0 0 14px rgba(59, 91, 146, 0.7);
+  animation: heroPixelDrift3 9s linear infinite;
+}
+
+.hero-cta {
+  position: relative;
+  animation: ctaPulse 2.4s ease-in-out infinite;
+}
+
+.hero-cta::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease;
+}
+
+.hero-cta:hover::after {
+  opacity: 1;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes ratchet-float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(12deg) scale(1);
+  }
+
+  25% {
+    transform: translateY(-4px) rotate(10deg) scale(1.01);
+  }
+
+  50% {
+    transform: translateY(-2px) rotate(14deg) scale(1);
+  }
+
+  75% {
+    transform: translateY(-6px) rotate(11deg) scale(1.005);
+  }
+}
+
+.ratchet-character {
+  animation: ratchet-float 3s ease-in-out infinite;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
