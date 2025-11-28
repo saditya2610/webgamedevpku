@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import activityImg1 from '../assets/IMG_20251116_171722.jpg'
 import activityImg2 from '../assets/IMG-20251116-WA0035.jpg'
 import activityImg3 from '../assets/IMG_20251116_141859.jpg'
+import gameDevIcon from '../assets/game-development.png'
+import gameConsoleIcon from '../assets/game-console.png'
 
 function ActivitiesSection() {
     const activityImages = [activityImg1, activityImg2, activityImg3]
@@ -30,6 +32,7 @@ function ActivitiesSection() {
     const sliderTrackStyle = {
         width: `${activityImages.length * 100}%`,
         transform: `translateX(-${(currentSlide * 100) / activityImages.length}%)`,
+        transition: 'transform 0.5s ease-in-out'
     }
 
     const sliderItemStyle = {
@@ -47,103 +50,108 @@ function ActivitiesSection() {
             >
                 Level Up Your Game!
             </h3>
-            <div className="mt-10 grid gap-8 md:gap-10 lg:gap-12 lg:grid-cols-2 items-start">
-                <div className="order-2 lg:order-1 space-y-6 md:space-y-8">
-                    <div className="p-6 md:p-8 rounded-xl bg-gray-100 border-4 border-gray-300 shadow-lg hover:shadow-xl transition duration-300 text-center">
-                        <div className="pixel-icon pixel-icon-1 mx-auto" />
-                        <h4
-                            className="text-2xl md:text-3xl font-extrabold mb-4 uppercase pixel-text"
-                            style={{ color: 'var(--color-fuchsia)' }}
+            <div className="order-1 lg:order-2 mb-10">
+                <div className="max-w-4xl mx-auto">
+                    <div className="relative overflow-hidden rounded-2xl border-4 border-gray-300 shadow-xl bg-black/5">
+                        <div
+                            className="flex transition-transform duration-700 ease-in-out"
+                            style={sliderTrackStyle}
                         >
-                            Coba Games
-                        </h4>
-                        <p className="text-base md:text-lg text-gray-700">
-                            Mainkan game-game terbaru dan karya komunitas lokal. Beri{' '}
-                            <em>feedback</em> dan temukan inspirasi!
-                        </p>
-                    </div>
-
-                    <div className="p-8 rounded-xl bg-gray-100 border-4 border-gray-300 shadow-lg hover:shadow-xl transition duration-300 text-center">
-                        <div className="pixel-icon pixel-icon-2 mx-auto" />
-                        <h4
-                            className="text-2xl md:text-3xl font-extrabold mb-4 uppercase pixel-text"
-                            style={{ color: 'var(--color-neon-green)' }}
-                        >
-                            Koleksi Games
-                        </h4>
-                        <p className="text-base md:text-lg text-gray-700">
-                            Perluas <em>library</em> game Kamu dengan judul-judul unik dari
-                            pengembang independen di Pekanbaru.
-                        </p>
-                    </div>
-
-                    <div className="p-8 rounded-xl bg-gray-100 border-4 border-gray-300 shadow-lg hover:shadow-xl transition duration-300 text-center">
-                        <div className="pixel-icon pixel-icon-3 mx-auto" />
-                        <h4
-                            className="text-2xl md:text-3xl font-extrabold mb-4 uppercase pixel-text"
-                            style={{ color: 'var(--color-fuchsia)' }}
-                        >
-                            Develop Games
-                        </h4>
-                        <p className="text-base md:text-lg text-gray-700">
-                            Dari ide hingga rilis, kembangkan game impian Kamu bersama para
-                            ahli dan <em>passionate developer</em>.
-                        </p>
-                    </div>
-                </div>
-
-                <div className="order-1 lg:order-2">
-                    <div className="max-w-xl mx-auto">
-                        <div className="relative overflow-hidden rounded-2xl border-4 border-gray-300 shadow-xl bg-black/5">
-                            <div
-                                className="flex transition-transform duration-700 ease-in-out"
-                                style={sliderTrackStyle}
-                            >
-                                {activityImages.map((imgSrc, index) => (
-                                    <div
-                                        // eslint-disable-next-line react/no-array-index-key
-                                        key={index}
-                                        className="flex-shrink-0 flex items-center justify-center"
-                                        style={sliderItemStyle}
-                                    >
-                                        <img
-                                            src={imgSrc}
-                                            alt={`Aktivitas Gamedev PKU ${index + 1}`}
-                                            className="w-full max-h-[420px] object-contain bg-black"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-
-                            <button
-                                type="button"
-                                onClick={prevSlide}
-                                className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/80 transition"
-                            >
-                                &#10094;
-                            </button>
-                            <button
-                                type="button"
-                                onClick={nextSlide}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/80 transition"
-                            >
-                                &#10095;
-                            </button>
-                        </div>
-
-                        <div className="flex justify-center mt-4 space-x-2">
-                            {activityImages.map((_, index) => (
-                                <button
+                            {activityImages.map((imgSrc, index) => (
+                                <div
                                     // eslint-disable-next-line react/no-array-index-key
                                     key={index}
-                                    type="button"
-                                    onClick={() => setCurrentSlide(index)}
-                                    className={`w-3 h-3 rounded-full border border-black ${currentSlide === index ? 'bg-black' : 'bg-white/60'
-                                        }`}
-                                />
+                                    className="flex-shrink-0 flex items-center justify-center"
+                                    style={sliderItemStyle}
+                                >
+                                    <img
+                                        src={imgSrc}
+                                        alt={`Aktivitas Gamedev PKU ${index + 1}`}
+                                        className="w-full max-h-[500px] object-contain bg-black"
+                                    />
+                                </div>
                             ))}
                         </div>
+
+                        <button
+                            type="button"
+                            onClick={prevSlide}
+                            className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/80 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            aria-label="Previous slide"
+                        >
+                            &#10094;
+                        </button>
+                        <button
+                            type="button"
+                            onClick={nextSlide}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/80 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                            aria-label="Next slide"
+                        >
+                            &#10095;
+                        </button>
                     </div>
+
+                    <div className="flex justify-center mt-4 space-x-2">
+                        {activityImages.map((_, index) => (
+                            <button
+                                // eslint-disable-next-line react/no-array-index-key
+                                key={index}
+                                type="button"
+                                onClick={() => setCurrentSlide(index)}
+                                className={`w-3 h-3 rounded-full border border-black transition-all duration-200 ${currentSlide === index ? 'bg-black scale-110' : 'bg-white/60 hover:bg-white/80'
+                                    }`}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className="grid gap-6 md:gap-8 lg:grid-cols-3">
+                <div className="p-8 rounded-xl bg-gray-100 border-4 border-gray-300 shadow-lg hover:shadow-xl transition duration-300 text-center">
+                    <img
+                        src={gameDevIcon}
+                        alt="Game Development"
+                        className="h-16 w-auto object-contain mx-auto mb-4"
+                    />
+                    <h4
+                        className="text-2xl md:text-3xl font-extrabold mb-4 uppercase pixel-text"
+                        style={{ color: 'var(--color-fuchsia)' }}
+                    >
+                        Develop Games
+                    </h4>
+                    <p className="text-base md:text-lg text-gray-700">
+                        Mengolah ide bersama dengan gamer dan gamedev, menciptakan produk yang berkaitan dengan industri game, hingga berkolaborasi dengan para ahli di bidangnya.
+                    </p>
+                </div>
+
+                <div className="p-6 md:p-8 rounded-xl bg-gray-100 border-4 border-gray-300 shadow-lg hover:shadow-xl transition duration-300 text-center">
+                    <img
+                        src={gameConsoleIcon}
+                        alt="Game Console"
+                        className="h-16 w-auto object-contain mx-auto mb-4"
+                    />
+                    <h4
+                        className="text-2xl md:text-3xl font-extrabold mb-4 uppercase pixel-text"
+                        style={{ color: 'var(--color-fuchsia)' }}
+                    >
+                        Coba Games
+                    </h4>
+                    <p className="text-base md:text-lg text-gray-700">
+                        Mengenal serta mencoba beragam games dan konsolnya, bersama komunitas gamedev dan gamer di Pekanbaru
+                    </p>
+                </div>
+
+                <div className="p-8 rounded-xl bg-gray-100 border-4 border-gray-300 shadow-lg hover:shadow-xl transition duration-300 text-center">
+                    <div className="pixel-icon pixel-icon-2 mx-auto" />
+                    <h4
+                        className="text-2xl md:text-3xl font-extrabold mb-4 uppercase pixel-text"
+                        style={{ color: 'var(--color-neon-green)' }}
+                    >
+                        Koleksi Games
+                    </h4>
+                    <p className="text-base md:text-lg text-gray-700">
+                        Tunjukkan koleksi games yang sudah kamu coba, bedah gamesnya, hingga mengenal marketnya.
+                    </p>
                 </div>
             </div>
         </section>
