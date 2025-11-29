@@ -3,10 +3,10 @@ function AboutSection() {
         <>
             <section
                 id="tentang"
-                className="mt-20 md:mt-32 p-10 rounded-2xl bg-gray-100 border-4 border-gray-300 shadow-xl text-center"
+                className="mt-16 md:mt-32 p-6 sm:p-8 md:p-10 rounded-2xl bg-gray-100 border-4 border-gray-300 shadow-xl text-center"
             >
                 <h3
-                    className="text-4xl md:text-5xl font-extrabold mb-6 uppercase pixel-text"
+                    className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 uppercase pixel-text px-4"
                     style={{
                         color: 'var(--color-deep-blue)',
                         textShadow: '2px 2px 0 black',
@@ -14,22 +14,22 @@ function AboutSection() {
                 >
                     Tentang Komunitas Gamedev PKU
                 </h3>
-                <p className="text-xl mb-8 font-medium text-gray-700 max-w-4xl mx-auto">
+                <p className="text-lg sm:text-xl mb-8 font-medium text-gray-700 max-w-4xl mx-auto px-4">
                     "Menjadikan komunitas yang menaungi ekosistem talenta industri gim secara inklusif dan inspiratif hingga mampu menciptakan karya yang menjual dan berdaya saing agar terwujudnya aspek gim sebagai ekonomi kreatif!
                 </p>
                 <a
                     href="#gabung"
-                    className="inline-block bg-black text-white text-xl font-bold py-3 px-8 rounded-xl uppercase tracking-widest border-2 border-gray-300 shadow-lg hover:shadow-xl hover:scale-[1.02] transform transition-all duration-300"
+                    className="inline-block bg-black text-white text-lg sm:text-xl font-bold py-3 px-6 sm:px-8 rounded-xl uppercase tracking-widest border-2 border-gray-300 shadow-lg hover:shadow-xl hover:scale-[1.02] transform transition-all duration-300"
                 >
                     Ayo Mulai Petualanganmu!
                 </a>
             </section>
 
-            <section className="mt-16 mb-20">
+            <section className="mt-12 sm:mt-16 mb-16 md:mb-20 px-4">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2
-                            className="text-3xl md:text-4xl font-extrabold uppercase pixel-text mb-4"
+                            className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase pixel-text mb-4"
                             style={{
                                 color: 'var(--color-deep-blue)',
                                 textShadow: '2px 2px 0 black',
@@ -37,23 +37,23 @@ function AboutSection() {
                         >
                             📜 Pondasi Gamedev PKU
                         </h2>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
                             Tiga pilar utama yang membentuk ekosistem game development di Pekanbaru
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                         {/* Coba Games Character Card */}
                         <div className="group relative">
                             <div className="bg-white rounded-2xl border-4 border-gray-300 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                                <div className="bg-gradient-to-br from-green-500 to-green-600 p-6 text-center">
+                                <div className="bg-gradient-to-br from-green-500 to-green-600 p-4 sm:p-6 text-center">
                                     <div className="inline-block w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
-                                        <span className="text-3xl font-bold text-white">1</span>
+                                        <span className="text-2xl sm:text-3xl font-bold text-white">1</span>
                                     </div>
-                                    <h3 className="text-2xl font-bold text-white uppercase tracking-wider">Coba Games</h3>
+                                    <h3 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Coba Games</h3>
                                 </div>
-                                <div className="p-6">
-                                    <p className="text-gray-600 mb-6 text-center">
+                                <div className="p-4 sm:p-6">
+                                    <p className="text-gray-600 mb-6 text-center text-sm sm:text-base">
                                         Platform untuk eksplorasi dan pengalaman gaming bersama komunitas
                                     </p>
                                     <div className="space-y-3">
@@ -81,14 +81,14 @@ function AboutSection() {
                         {/* Koleksi Games Character Card */}
                         <div className="group relative">
                             <div className="bg-white rounded-2xl border-4 border-gray-300 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                                <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-6 text-center">
+                                <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-4 sm:p-6 text-center">
                                     <div className="inline-block w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
-                                        <span className="text-3xl font-bold text-white">2</span>
+                                        <span className="text-2xl sm:text-3xl font-bold text-white">2</span>
                                     </div>
-                                    <h3 className="text-2xl font-bold text-white uppercase tracking-wider">Koleksi Games</h3>
+                                    <h3 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Koleksi Games</h3>
                                 </div>
-                                <div className="p-6">
-                                    <p className="text-gray-600 mb-6 text-center">
+                                <div className="p-4 sm:p-6">
+                                    <p className="text-gray-600 mb-6 text-center text-sm sm:text-base">
                                         Wadah untuk koleksi, diskusi, dan analisis game mendalam
                                     </p>
                                     <div className="space-y-3">
@@ -112,14 +112,14 @@ function AboutSection() {
                         {/* Develop Games Character Card */}
                         <div className="group relative">
                             <div className="bg-white rounded-2xl border-4 border-gray-300 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                                <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-6 text-center">
+                                <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-4 sm:p-6 text-center">
                                     <div className="inline-block w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
-                                        <span className="text-3xl font-bold text-white">3</span>
+                                        <span className="text-2xl sm:text-3xl font-bold text-white">3</span>
                                     </div>
-                                    <h3 className="text-2xl font-bold text-white uppercase tracking-wider">Develop Games</h3>
+                                    <h3 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Develop Games</h3>
                                 </div>
-                                <div className="p-6">
-                                    <p className="text-gray-600 mb-6 text-center">
+                                <div className="p-4 sm:p-6">
+                                    <p className="text-gray-600 mb-6 text-center text-sm sm:text-base">
                                         Ekosistem untuk pengembangan game dan industri kreatif
                                     </p>
                                     <div className="space-y-3">

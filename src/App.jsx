@@ -1,11 +1,18 @@
 import './App.css'
 import logoGDP from '../assets/Logo GDP besar.png'
 import { Routes, Route, Link } from 'react-router-dom'
+import { useState } from 'react'
 import HomePage from './HomePage.jsx'
 import AboutPage from './AboutPage.jsx'
 import JoinPage from './JoinPage.jsx'
+import DevelopGamesPage from './DevelopGamesPage.jsx'
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
   return (
     <div className="min-h-screen antialiased w-full overflow-x-hidden">
       <header className="fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-900 to-blue-800 shadow-xl z-50 border-b-4 border-blue-950 w-full">
@@ -24,34 +31,132 @@ function App() {
               </h1>
             </div>
           </div>
-          <nav className="flex items-center space-x-6">
-            <Link
-              to="/"
-              className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 transform hover:scale-105 hidden sm:inline-block"
+          <div className="flex items-center">
+            {/* Mobile menu button */}
+            <button
+              onClick={toggleMenu}
+              className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+              aria-label="Toggle menu"
             >
-              Beranda
-            </Link>
-            <Link
-              to="/tentang"
-              className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 transform hover:scale-105 hidden sm:inline-block"
-            >
-              Tentang
-            </Link>
-            <Link
-              to="/"
-              className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 transform hover:scale-105 hidden sm:inline-block"
-            >
-              Aktivitas
-            </Link>
-            <Link
-              to="/gabung"
-              className="bg-cyan-400 text-blue-900 font-bold py-2 px-6 rounded-full ml-4 uppercase tracking-wider border-2 border-cyan-300 hover:bg-cyan-300 hover:scale-105 transition-all duration-300 shadow-lg"
-            >
-              Bergabung
-            </Link>
-          </nav>
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+
+            {/* Desktop navigation */}
+            <nav className="hidden md:flex items-center space-x-6 ml-6">
+              <Link
+                to="/"
+                className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 transform hover:scale-105"
+              >
+                Beranda
+              </Link>
+              <Link
+                to="/tentang"
+                className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 transform hover:scale-105"
+              >
+                Tentang
+              </Link>
+              <Link
+                to="/develop-games"
+                className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 transform hover:scale-105"
+              >
+                Develop Games
+              </Link>
+              <Link
+                to="/gabung"
+                className="bg-cyan-400 text-blue-900 font-bold py-2 px-6 rounded-full uppercase tracking-wider border-2 border-cyan-300 hover:bg-cyan-300 hover:scale-105 transition-all duration-300 shadow-lg"
+              >
+                Bergabung
+              </Link>
+            </nav>
+          </div>
         </div>
       </header>
+
+      {/* Mobile navigation menu */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={toggleMenu}
+          />
+          <div className="fixed right-0 top-0 h-full w-64 bg-gradient-to-b from-blue-900 to-blue-800 shadow-2xl transform transition-transform duration-300 ease-in-out">
+            <div className="p-4">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-white font-bold text-lg pixel-text">MENU</h2>
+                <button
+                  onClick={toggleMenu}
+                  className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <nav className="flex flex-col space-y-4">
+                <Link
+                  to="/"
+                  onClick={toggleMenu}
+                  className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 py-3 px-4 rounded-lg hover:bg-white/10"
+                >
+                  Beranda
+                </Link>
+                <Link
+                  to="/tentang"
+                  onClick={toggleMenu}
+                  className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 py-3 px-4 rounded-lg hover:bg-white/10"
+                >
+                  Tentang
+                </Link>
+                <Link
+                  to="/develop-games"
+                  onClick={toggleMenu}
+                  className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 py-3 px-4 rounded-lg hover:bg-white/10"
+                >
+                  Develop Games
+                </Link>
+                <Link
+                  to="/gabung"
+                  onClick={toggleMenu}
+                  className="bg-cyan-400 text-blue-900 font-bold py-3 px-6 rounded-full uppercase tracking-wider border-2 border-cyan-300 hover:bg-cyan-300 transition-all duration-300 shadow-lg text-center mt-4"
+                >
+                  Bergabung
+                </Link>
+              </nav>
+            </div>
+          </div>
+        </div>
+      )}
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 pb-24 md:pb-32 relative">
         <div className="hero-bg-overlay" />
@@ -60,6 +165,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/tentang" element={<AboutPage />} />
           <Route path="/gabung" element={<JoinPage />} />
+          <Route path="/develop-games" element={<DevelopGamesPage />} />
         </Routes>
       </main>
 
