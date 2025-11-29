@@ -6,6 +6,7 @@ import HomePage from './HomePage.jsx'
 import AboutPage from './AboutPage.jsx'
 import JoinPage from './JoinPage.jsx'
 import DevelopGamesPage from './DevelopGamesPage.jsx'
+import ActivitiesPage from './ActivitiesPage.jsx'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -83,6 +84,12 @@ function App() {
                 Develop Games
               </Link>
               <Link
+                to="/activities"
+                className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 transform hover:scale-105"
+              >
+                Aktivitas
+              </Link>
+              <Link
                 to="/gabung"
                 className="bg-cyan-400 text-blue-900 font-bold py-2 px-6 rounded-full uppercase tracking-wider border-2 border-cyan-300 hover:bg-cyan-300 hover:scale-105 transition-all duration-300 shadow-lg"
               >
@@ -146,6 +153,13 @@ function App() {
                   Develop Games
                 </Link>
                 <Link
+                  to="/activities"
+                  onClick={toggleMenu}
+                  className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 py-3 px-4 rounded-lg hover:bg-white/10"
+                >
+                  Aktivitas
+                </Link>
+                <Link
                   to="/gabung"
                   onClick={toggleMenu}
                   className="bg-cyan-400 text-blue-900 font-bold py-3 px-6 rounded-full uppercase tracking-wider border-2 border-cyan-300 hover:bg-cyan-300 transition-all duration-300 shadow-lg text-center mt-4"
@@ -166,6 +180,7 @@ function App() {
           <Route path="/tentang" element={<AboutPage />} />
           <Route path="/gabung" element={<JoinPage />} />
           <Route path="/develop-games" element={<DevelopGamesPage />} />
+          <Route path="/activities" element={<ActivitiesPage />} />
         </Routes>
       </main>
 

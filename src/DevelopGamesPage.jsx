@@ -13,7 +13,7 @@ function DevelopGamesPage() {
             id: 1,
             title: "Nyusruk",
             category: "indie",
-            console: "Web Browser",
+            console: "PC",
             description: "Game indie yang menarik dan bisa dimainkan langsung di browser. Nikmati pengalaman gaming yang seru!",
             link: "https://one-project.itch.io/nyusruk",
             image: nyusrukImage
@@ -23,7 +23,7 @@ function DevelopGamesPage() {
             title: "Lost Eclipse",
             category: "indie",
             console: "Multi Platform",
-            description: "Game petualangan indie yang seru dengan grafis menarik. Tersedia di itch.io dan Steam!",
+            description: "After the city was shrouded with nightmares, you’ve been assigned to dive into this psychological survival-horror adventure to uncover its strange phenomenons that are affiliated to a certain science-tech corporation and bring them to justice. ",
             itchLink: "https://fabicomm-pro.itch.io/lost-eclipse",
             steamLink: "https://store.steampowered.com/app/3853160/Lost_Eclipse/",
             image: lostEclipseImage
