@@ -1,5 +1,7 @@
 import marioKontak from '../assets/mariokontak.png'
 import ratchetCharacter from '../assets/ratchet.png'
+import gdpLogo from '../assets/Logo GDP besar.png'
+import discordQr from '../assets/barcodeqr_discord.jpeg'
 
 function JoinSection() {
     return (
@@ -73,6 +75,25 @@ function JoinSection() {
                         </p>
                     </div>
 
+                    <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-gray-900 border-4 border-white/20 neon-glow-blue text-center">
+                        <p
+                            className="text-lg sm:text-xl font-bold uppercase mb-4 pixel-text"
+                            style={{ color: '#3B82F6' }}
+                        >
+                            Discord Server &gt;&gt;
+                        </p>
+                        <div className="qr-code-box mx-auto">
+                            <img
+                                src={discordQr}
+                                alt="QR Code Discord Server"
+                                className="w-32 h-32 sm:w-40 sm:h-40 object-cover"
+                            />
+                        </div>
+                        <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-300">
+                            Scan QR di atas untuk bergabung dengan server Discord kami.
+                        </p>
+                    </div>
+
                     <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-gray-900 border-4 border-white/20 neon-glow-fuchsia text-center">
                         <p
                             className="text-lg sm:text-xl font-bold uppercase mb-4 pixel-text"
@@ -94,6 +115,14 @@ function JoinSection() {
                         </p>
                     </div>
                 </div>
+            </div>
+
+            <div className="mt-12 text-center">
+                <img
+                    src={gdpLogo}
+                    alt="GDP Logo"
+                    className="mx-auto w-32 sm:w-40 md:w-48 lg:w-56 h-auto object-contain drop-shadow-lg"
+                />
             </div>
         </section>
     )

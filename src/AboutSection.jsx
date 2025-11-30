@@ -15,7 +15,7 @@ function AboutSection() {
                     Tentang Komunitas Gamedev PKU
                 </h3>
                 <p className="text-lg sm:text-xl mb-8 font-medium text-gray-700 max-w-4xl mx-auto px-4">
-                    "Menjadikan komunitas yang menaungi ekosistem talenta industri gim secara inklusif dan inspiratif hingga mampu menciptakan karya yang menjual dan berdaya saing agar terwujudnya aspek gim sebagai ekonomi kreatif!
+                    "Menjadikan komunitas yang menaungi ekosistem talenta industri gim secara inklusif dan inspiratif hingga mampu menciptakan karya yang menjual dan berdaya saing agar terwujudnya aspek gim sebagai ekonomi kreatif!"
                 </p>
                 <a
                     href="#gabung"

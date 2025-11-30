@@ -1,6 +1,9 @@
 import borgarLogo from '../assets/borgar.png'
 import cardPortalLogo from '../assets/card_portal.png'
 import fabicommLogo from '../assets/Logo Fabicomm.png'
+import genaliStudioLogo from '../assets/genali studio.png'
+import nakamaLogo from '../assets/nakamalogo.jpg'
+import projectSekaiLogo from '../assets/projectsekailogo.png'
 import redblackLogo from '../assets/Red Black Full.png'
 import reieclipseLogo from '../assets/reieclipse.png'
 import solutronicLogo from '../assets/solutroniclogo.png'
@@ -38,12 +41,12 @@ function PartnersSection() {
             </div>
 
             <div className="max-w-6xl mx-auto px-4">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 items-center justify-items-center mb-6 sm:mb-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 items-center justify-items-center mb-6 sm:mb-8">
                     <div className="p-3 sm:p-4 md:p-6 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
                         <img
                             src={borgarLogo}
                             alt="Borgar"
-                            className="h-10 sm:h-12 md:h-16 w-auto object-contain mx-auto"
+                            className="h-12 sm:h-16 md:h-20 w-auto object-contain mx-auto"
                         />
                     </div>
                     <div className="p-3 sm:p-4 md:p-6 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
@@ -67,8 +70,6 @@ function PartnersSection() {
                             className="h-10 sm:h-12 md:h-16 w-auto object-contain mx-auto"
                         />
                     </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 items-center justify-items-center">
                     <div className="p-3 sm:p-4 md:p-6 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
                         <img
                             src={solutronicLogo}
@@ -76,6 +77,8 @@ function PartnersSection() {
                             className="h-10 sm:h-12 md:h-16 w-auto object-contain mx-auto"
                         />
                     </div>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 items-center justify-items-center">
                     <div className="p-3 sm:p-4 md:p-6 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
                         <img
                             src={umamusumeLogo}
@@ -87,6 +90,27 @@ function PartnersSection() {
                         <img
                             src={umamusumeSumateraLogo}
                             alt="Umamusume Sumatera"
+                            className="h-10 sm:h-12 md:h-16 w-auto object-contain mx-auto"
+                        />
+                    </div>
+                    <div className="p-3 sm:p-4 md:p-6 rounded-xl bg-black border-2 border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <img
+                            src={genaliStudioLogo}
+                            alt="Genali Studio"
+                            className="h-12 sm:h-16 md:h-20 w-auto object-contain mx-auto"
+                        />
+                    </div>
+                    <div className="p-3 sm:p-4 md:p-6 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <img
+                            src={nakamaLogo}
+                            alt="Nakama"
+                            className="h-10 sm:h-12 md:h-16 w-auto object-contain mx-auto"
+                        />
+                    </div>
+                    <div className="p-3 sm:p-4 md:p-6 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <img
+                            src={projectSekaiLogo}
+                            alt="Project Sekai"
                             className="h-10 sm:h-12 md:h-16 w-auto object-contain mx-auto"
                         />
                     </div>

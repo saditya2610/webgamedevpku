@@ -8,7 +8,7 @@ import gameDevIcon from '../assets/game-development.png'
 import gameConsoleIcon from '../assets/game-console.png'
 
 const activityData = [
-    { src: activityImg1, title: 'GamedevPKU x Umamusume Pekanbaru', date: 'November 2024', description: '2nd Gathering GamedevPKU collabs with Uma Musume and Other Communities games' },
+    { src: activityImg1, title: 'GamedevPKU x Umamusume Pekanbaru', date: 'November 2025', description: '2nd Gathering GamedevPKU collabs with Uma Musume and Other Communities games' },
     { src: activityImg2, title: 'Trophy Tournament Fun Match Day', date: 'November 2025', description: 'Community gaming and networking event' },
     { src: activityImg3, title: '', date: 'November 2025', description: 'Showcasing local game developer projects and The communities Games in Pekanbaru' },
     { src: gatheringImg, title: 'GamedevPKU Gathering', date: 'First Gathering', description: 'First official GamedevPKU community gathering' }
