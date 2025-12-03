@@ -234,17 +234,21 @@ function ActivitiesPage() {
                                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                                         {selectedActivity.videoUrls.map((url, index) => {
                                             const thumbnailUrl = getDriveThumbnailUrl(url)
+                                            const isPlaying = playingVideoIndex === index
+                                            const containerClass = isPlaying
+                                                ? 'relative md:col-span-2 lg:col-span-3 aspect-video w-full rounded-2xl overflow-hidden border-4 border-gray-300 shadow-lg bg-black flex items-center justify-center'
+                                                : 'relative aspect-[9/16] w-full rounded-2xl overflow-hidden border-4 border-gray-300 shadow-lg bg-black flex items-center justify-center'
 
                                             return (
                                                 <div
                                                     key={index}
-                                                    className="relative aspect-[9/16] w-full rounded-2xl overflow-hidden border-4 border-gray-300 shadow-lg bg-black flex items-center justify-center"
+                                                    className={containerClass}
                                                 >
-                                                    {playingVideoIndex === index ? (
+                                                    {isPlaying ? (
                                                         <>
                                                             <iframe
                                                                 src={url}
-                                                                className="w-full h-full"
+                                                                className="w-full h-full mx-auto"
                                                                 allow="autoplay; encrypted-media"
                                                                 allowFullScreen
                                                                 title={`${selectedActivity.title} - Video ${index + 1}`}
