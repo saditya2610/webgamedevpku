@@ -187,9 +187,15 @@ function ActivitiesSection() {
                     >
                         Koleksi Games
                     </h4>
-                    <p className="text-sm sm:text-base md:text-lg text-gray-700">
+                    <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-6">
                         Tunjukkan koleksi games yang sudah kamu coba, bedah gamesnya, hingga mengenal marketnya.
                     </p>
+                    <Link
+                        to="/koleksi-games"
+                        className="inline-block bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold py-3 px-6 rounded-xl uppercase tracking-wider border-2 border-purple-400 hover:from-purple-600 hover:to-purple-700 hover:scale-105 transition-all duration-300 shadow-lg"
+                    >
+                        Lihat Koleksi Games
+                    </Link>
                 </div>
 
                 <div className="p-6 sm:p-8 rounded-xl bg-gray-100 border-4 border-gray-300 shadow-lg hover:shadow-xl transition duration-300 text-center">

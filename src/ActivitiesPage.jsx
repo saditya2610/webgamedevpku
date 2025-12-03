@@ -5,6 +5,7 @@ import activityImg2 from '../assets/IMG-20251116-WA0035.jpg'
 import activityImg3 from '../assets/IMG_20251116_141859.jpg'
 import gatheringImg from '../assets/gathering1st/Foto bersama GamedevPKU.jpeg'
 import gameDevIcon from '../assets/game-development.png'
+import logoGDP from '../assets/Logo GDP besar.png'
 
 const activitiesData = [
     {
@@ -21,11 +22,20 @@ const activitiesData = [
         id: 2,
         src: activityImg1,
         title: 'GamedevPKU x Umamusume Pekanbaru',
-        date: 'November 2024',
+        date: 'November 2025',
         description: '2nd Gathering GamedevPKU collabs with Uma Musume and Other Communities games',
         fullDescription: 'Kolaborasi epik antara GamedevPKU dengan komunitas Uma Musume dan komunitas game lainnya di Pekanbaru. Acara ini menampilkan diskusi mendalam tentang game development, networking session, dan showcase proyek-proyek terbaru dari para member komunitas.',
         category: 'Collaboration',
-        participants: 45
+        participants: 45,
+        videoUrls: [
+            'https://drive.google.com/file/d/1GPQBXUfoF736InNEif-JiZgy_-RX-0JM/preview',
+            'https://drive.google.com/file/d/1RlzxCfF9HccRWtfZ71y1WA6oSS8yNGYH/preview',
+            'https://drive.google.com/file/d/1cAPhEAd_Tv6UQsn_OcqS8cN7wMliPH_K/preview',
+            'https://drive.google.com/file/d/1lQxbdm_kc0VvczOwveF7cy_JR3Lb1XZi/preview',
+            'https://drive.google.com/file/d/1_mzOe-F5njR5nL8g8AZ8jS8iFUO9fWxb/preview',
+            'https://drive.google.com/file/d/1lq1mI-1NGBoNA5ye5I4vMU4hqwn8Xj00/preview',
+            'https://drive.google.com/file/d/1gwgrJKq0sJDOvgpSxZfW1lNMy3Bn4wvT/preview',
+        ],
     },
     {
         id: 3,
@@ -49,9 +59,23 @@ const activitiesData = [
     }
 ]
 
+const getDriveThumbnailUrl = (previewUrl) => {
+    if (!previewUrl) return ''
+    try {
+        const match = previewUrl.match(/\/file\/d\/([^/]+)\//)
+        const fileId = match && match[1]
+        if (!fileId) return ''
+        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`
+    } catch {
+        return ''
+    }
+}
+
 function ActivitiesPage() {
     const [selectedCategory, setSelectedCategory] = useState('All')
     const [searchTerm, setSearchTerm] = useState('')
+    const [selectedActivity, setSelectedActivity] = useState(null)
+    const [playingVideoIndex, setPlayingVideoIndex] = useState(null)
 
     const categories = ['All', 'Gathering', 'Collaboration', 'Tournament', 'Showcase']
 
@@ -165,7 +189,10 @@ function ActivitiesPage() {
                                 <p className="text-gray-600 mb-4 line-clamp-2">{activity.description}</p>
                                 <div className="border-t pt-4">
                                     <p className="text-sm text-gray-600 mb-3 line-clamp-3">{activity.fullDescription}</p>
-                                    <button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:from-purple-600 hover:to-purple-700 transition-all duration-200">
+                                    <button
+                                        className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold py-2 px-4 rounded-lg hover:from-purple-600 hover:to-purple-700 transition-all duration-200"
+                                        onClick={() => setSelectedActivity(activity)}
+                                    >
                                         Lihat Detail
                                     </button>
                                 </div>
@@ -173,6 +200,126 @@ function ActivitiesPage() {
                         </div>
                     ))}
                 </div>
+
+                {/* Detail Modal */}
+                {selectedActivity && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+                        <div className="bg-white rounded-2xl border-4 border-gray-300 shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                            <div className="flex justify-between items-start p-4 border-b border-gray-200">
+                                <div>
+                                    <h2
+                                        className="text-2xl font-bold mb-1"
+                                        style={{ color: 'var(--color-deep-blue)' }}
+                                    >
+                                        {selectedActivity.title}
+                                    </h2>
+                                    <p className="text-sm text-gray-500">{selectedActivity.date} · {selectedActivity.category}</p>
+                                </div>
+                                <button
+                                    onClick={() => {
+                                        setSelectedActivity(null)
+                                        setPlayingVideoIndex(null)
+                                    }}
+                                    className="ml-4 text-gray-500 hover:text-gray-700 rounded-full p-2 hover:bg-gray-100 transition-colors"
+                                    aria-label="Tutup detail"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div className="p-4 md:p-6 space-y-6">
+                                {selectedActivity.videoUrls && selectedActivity.videoUrls.length > 0 && (
+                                    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                        {selectedActivity.videoUrls.map((url, index) => {
+                                            const thumbnailUrl = getDriveThumbnailUrl(url)
+
+                                            return (
+                                                <div
+                                                    key={index}
+                                                    className="relative aspect-[9/16] w-full rounded-2xl overflow-hidden border-4 border-gray-300 shadow-lg bg-black flex items-center justify-center"
+                                                >
+                                                    {playingVideoIndex === index ? (
+                                                        <>
+                                                            <iframe
+                                                                src={url}
+                                                                className="w-full h-full"
+                                                                allow="autoplay; encrypted-media"
+                                                                allowFullScreen
+                                                                title={`${selectedActivity.title} - Video ${index + 1}`}
+                                                            />
+                                                            <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-3">
+                                                                <div className="bg-black/50 rounded-lg px-2 py-1 flex items-center gap-2">
+                                                                    <img
+                                                                        src={logoGDP}
+                                                                        alt="GamedevPKU Logo"
+                                                                        className="h-6 w-auto object-contain opacity-80"
+                                                                    />
+                                                                    <span className="text-[10px] font-semibold tracking-wider uppercase text-white opacity-80">
+                                                                        GamedevPKU
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </>
+                                                    ) : (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setPlayingVideoIndex(index)}
+                                                            className="relative w-full h-full flex flex-col items-center justify-center text-center text-white px-3 py-4"
+                                                        >
+                                                            {thumbnailUrl && (
+                                                                <img
+                                                                    src={thumbnailUrl}
+                                                                    alt={`${selectedActivity.title} thumbnail ${index + 1}`}
+                                                                    className="absolute inset-0 w-full h-full object-cover"
+                                                                />
+                                                            )}
+                                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                                                            <div className="relative flex flex-col items-center gap-3">
+                                                                <div className="bg-white/10 rounded-full p-3 border border-white/30 shadow-lg">
+                                                                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                                                        <path d="M8 5v14l11-7z" />
+                                                                    </svg>
+                                                                </div>
+                                                                <div className="flex flex-col items-center gap-1">
+                                                                    <span className="text-xs font-semibold tracking-widest uppercase text-cyan-300">
+                                                                        Video Preview
+                                                                    </span>
+                                                                    <span className="text-sm font-bold leading-tight text-white drop-shadow">
+                                                                        {selectedActivity.title}
+                                                                    </span>
+                                                                    <span className="text-[10px] text-gray-200">
+                                                                        Clip {index + 1}
+                                                                    </span>
+                                                                </div>
+                                                                <div className="mt-3 bg-black/60 rounded-lg px-2 py-1 flex items-center gap-2">
+                                                                    <img
+                                                                        src={logoGDP}
+                                                                        alt="GamedevPKU Logo"
+                                                                        className="h-5 w-auto object-contain opacity-80"
+                                                                    />
+                                                                    <span className="text-[9px] font-semibold tracking-wider uppercase text-white opacity-80">
+                                                                        GamedevPKU Archive
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                )}
+
+                                <div className="space-y-3">
+                                    <p className="text-gray-700">{selectedActivity.fullDescription}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
 
                 {/* Empty State */}
                 {filteredActivities.length === 0 && (

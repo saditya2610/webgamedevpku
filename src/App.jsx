@@ -7,6 +7,7 @@ import AboutPage from './AboutPage.jsx'
 import JoinPage from './JoinPage.jsx'
 import DevelopGamesPage from './DevelopGamesPage.jsx'
 import ActivitiesPage from './ActivitiesPage.jsx'
+import GamesCollectionPage from './GamesCollectionPage.jsx'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -181,6 +182,7 @@ function App() {
           <Route path="/gabung" element={<JoinPage />} />
           <Route path="/develop-games" element={<DevelopGamesPage />} />
           <Route path="/activities" element={<ActivitiesPage />} />
+          <Route path="/koleksi-games" element={<GamesCollectionPage />} />
         </Routes>
       </main>
 
