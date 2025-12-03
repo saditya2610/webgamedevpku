@@ -6,8 +6,14 @@ import activityImg3 from '../assets/IMG_20251116_141859.jpg'
 import gatheringImg from '../assets/gathering1st/Foto bersama GamedevPKU.jpeg'
 import gameDevIcon from '../assets/game-development.png'
 import logoGDP from '../assets/Logo GDP besar.png'
+import roadTo2ndImg from '../assets/roadtogath2nd/roadto2ndgamedevpku.jpg'
+import roadTo2ndBannerImg from '../assets/roadtogath2nd/roadto2ndgamedev.jpg'
+import roadToGathImg from '../assets/roadtogath2nd/roadtogathgamedev.jpg'
+import roadToGathAltImg from '../assets/roadtogath2nd/roadtogathgamedev.jpeg'
+import trophyRevealImg from '../assets/roadtogath2nd/trophyreveal.jpg'
 
 const activitiesData = [
+
     {
         id: 1,
         src: gatheringImg,
@@ -17,6 +23,23 @@ const activitiesData = [
         fullDescription: 'Momentum bersejarah dimulainya komunitas GamedevPKU. Acara ini mengumpulkan para developer game, gamer, dan entusiast industri game di Pekanbaru untuk berbagi pengalaman, membentuk jaringan, dan merencanakan masa depan industri game lokal.',
         category: 'Gathering',
         participants: 25
+    },
+    {
+        id: 5,
+        src: roadTo2ndImg,
+        title: 'Road to 2nd Gathering GamedevPKU x Uma Musume PKU',
+        date: 'Oktober - November 2025',
+        description: 'Serangkaian kegiatan dan konten menuju 2nd Gathering kolaborasi GamedevPKU dengan Uma Musume PKU.',
+        fullDescription: 'Road to 2nd Gathering berisi dokumentasi perjalanan persiapan event, mulai dari produksi konten, publikasi, hingga aktivitas komunitas sebelum hari-H. Kegiatan ini jadi jembatan antara komunitas GamedevPKU dengan Uma Musume PKU dan komunitas gamer lainnya di Pekanbaru.',
+        category: 'Collaboration',
+        participants: 0,
+        gallery: [
+            roadTo2ndBannerImg,
+            roadTo2ndImg,
+            roadToGathImg,
+            roadToGathAltImg,
+            trophyRevealImg,
+        ]
     },
     {
         id: 2,
@@ -316,9 +339,25 @@ function ActivitiesPage() {
                                     </div>
                                 )}
 
-                                <div className="space-y-3">
-                                    <p className="text-gray-700">{selectedActivity.fullDescription}</p>
+                                <div className="space-y-4">
+                                    {selectedActivity.gallery && selectedActivity.gallery.length > 0 && (
+                                        <div className="grid gap-3 md:grid-cols-2">
+                                            {selectedActivity.gallery.map((imgSrc, idx) => (
+                                                <div
+                                                    key={idx}
+                                                    className="overflow-hidden rounded-xl border-2 border-gray-300 shadow-sm bg-gray-50"
+                                                >
+                                                    <img
+                                                        src={imgSrc}
+                                                        alt={`${selectedActivity.title} gallery ${idx + 1}`}
+                                                        className="w-full h-40 md:h-48 object-cover hover:scale-105 transition-transform duration-300"
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
 
+                                    <p className="text-gray-700">{selectedActivity.fullDescription}</p>
                                 </div>
                             </div>
                         </div>
