@@ -8,9 +8,11 @@ import JoinPage from './JoinPage.jsx'
 import DevelopGamesPage from './DevelopGamesPage.jsx'
 import ActivitiesPage from './ActivitiesPage.jsx'
 import GamesCollectionPage from './GamesCollectionPage.jsx'
+import LombaPage from './LombaPage.jsx'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isActivitiesDropdownOpen, setIsActivitiesDropdownOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -84,12 +86,35 @@ function App() {
               >
                 Develop Games
               </Link>
-              <Link
-                to="/activities"
-                className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 transform hover:scale-105"
-              >
-                Aktivitas
-              </Link>
+              <div className="relative">
+                <button
+                  onClick={() => setIsActivitiesDropdownOpen(!isActivitiesDropdownOpen)}
+                  className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-1"
+                >
+                  Aktivitas
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {isActivitiesDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border-2 border-cyan-300 z-50">
+                    <Link
+                      to="/activities"
+                      onClick={() => setIsActivitiesDropdownOpen(false)}
+                      className="block px-4 py-3 text-blue-900 hover:bg-cyan-100 font-semibold transition-colors"
+                    >
+                      Arsip Aktivitas
+                    </Link>
+                    <Link
+                      to="/lomba"
+                      onClick={() => setIsActivitiesDropdownOpen(false)}
+                      className="block px-4 py-3 text-blue-900 hover:bg-cyan-100 font-semibold transition-colors border-t border-gray-200"
+                    >
+                      Challenge
+                    </Link>
+                  </div>
+                )}
+              </div>
               <Link
                 to="/gabung"
                 className="bg-cyan-400 text-blue-900 font-bold py-2 px-6 rounded-full uppercase tracking-wider border-2 border-cyan-300 hover:bg-cyan-300 hover:scale-105 transition-all duration-300 shadow-lg"
@@ -153,13 +178,35 @@ function App() {
                 >
                   Develop Games
                 </Link>
-                <Link
-                  to="/activities"
-                  onClick={toggleMenu}
-                  className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 py-3 px-4 rounded-lg hover:bg-white/10"
-                >
-                  Aktivitas
-                </Link>
+                <div className="relative">
+                  <button
+                    onClick={() => setIsActivitiesDropdownOpen(!isActivitiesDropdownOpen)}
+                    className="text-white hover:text-cyan-300 font-semibold transition-all duration-300 py-3 px-4 rounded-lg hover:bg-white/10 flex items-center justify-between"
+                  >
+                    <span>Aktivitas</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {isActivitiesDropdownOpen && (
+                    <div className="ml-4 mt-2 space-y-2">
+                      <Link
+                        to="/activities"
+                        onClick={toggleMenu}
+                        className="block text-white hover:text-cyan-300 font-semibold transition-all duration-300 py-2 px-4 rounded-lg hover:bg-white/10"
+                      >
+                        Arsip Aktivitas
+                      </Link>
+                      <Link
+                        to="/lomba"
+                        onClick={toggleMenu}
+                        className="block text-white hover:text-cyan-300 font-semibold transition-all duration-300 py-2 px-4 rounded-lg hover:bg-white/10"
+                      >
+                        Challenge
+                      </Link>
+                    </div>
+                  )}
+                </div>
                 <Link
                   to="/gabung"
                   onClick={toggleMenu}
@@ -182,6 +229,7 @@ function App() {
           <Route path="/gabung" element={<JoinPage />} />
           <Route path="/develop-games" element={<DevelopGamesPage />} />
           <Route path="/activities" element={<ActivitiesPage />} />
+          <Route path="/lomba" element={<LombaPage />} />
           <Route path="/koleksi-games" element={<GamesCollectionPage />} />
         </Routes>
       </main>
