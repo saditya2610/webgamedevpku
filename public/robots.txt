@@ -1,19 +1,8 @@
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: https://gamedevpku.vercel.app/sitemap.xml
 
-# Block common non-content paths
+# Optional blocks jika kamu punya backend
 Disallow: /api/
 Disallow: /admin/
-Disallow: /*.json$
-Disallow: /*?* 
-
-# Allow specific important paths
-Allow: /src/
-Allow: /assets/
-Allow: /public/
-
-# Crawler delay for politeness
-Crawl-delay: 1
