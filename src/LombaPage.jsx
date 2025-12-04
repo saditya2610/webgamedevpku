@@ -175,7 +175,7 @@ function LombaPage() {
                         {/* Instagram-style Content */}
                         <div className="p-6">
                             {/* Header */}
-                            <div className="flex items-center justify-between mb-4">
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-full flex items-center justify-center">
                                         <span className="text-white font-bold text-sm">GD</span>
@@ -187,7 +187,7 @@ function LombaPage() {
                                         <p className="text-sm text-gray-500">Desember 2025</p>
                                     </div>
                                 </div>
-                                <div className="flex gap-2">
+                                <div className="flex flex-wrap gap-2">
                                     <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                                         Challenge
                                     </span>
