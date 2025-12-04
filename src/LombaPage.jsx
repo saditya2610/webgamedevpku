@@ -151,8 +151,8 @@ function LombaPage() {
                                 />
                                 <div className="absolute bottom-4 left-4 right-4">
                                     <div className="bg-black/60 backdrop-blur-sm rounded-lg p-4">
-                                        <h3 className="text-white font-bold text-lg mb-1">Game Development Challenge</h3>
-                                        <p className="text-white/90 text-sm">Tantangan pengembangan game dengan tema "Local Culture"</p>
+                                        <h3 className="text-white font-bold text-lg mb-1">Mockup Challenge</h3>
+                                        <p className="text-white/90 text-sm">Tantangan pengembangan game</p>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +182,7 @@ function LombaPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-lg" style={{ color: 'var(--color-deep-blue)' }}>
-                                            Game Development Challenge
+                                            Game Development Challenge (Mockup Challenge)
                                         </h3>
                                         <p className="text-sm text-gray-500">Desember 2025</p>
                                     </div>
