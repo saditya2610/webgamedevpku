@@ -14,9 +14,55 @@ function AboutSection() {
                 >
                     Tentang Komunitas Gamedev PKU
                 </h3>
-                <p className="text-lg sm:text-xl mb-8 font-medium text-gray-700 max-w-4xl mx-auto px-4">
-                    "Menjadikan komunitas yang menaungi ekosistem talenta industri gim secara inklusif dan inspiratif hingga mampu menciptakan karya yang menjual dan berdaya saing agar terwujudnya aspek gim sebagai ekonomi kreatif!"
-                </p>
+
+                {/* Visi */}
+                <div className="mb-8 max-w-4xl mx-auto px-4">
+                    <h4 className="text-2xl sm:text-3xl font-bold mb-4 uppercase" style={{ color: 'var(--color-deep-blue)' }}>
+                        🎯 Visi
+                    </h4>
+                    <p className="text-lg sm:text-xl font-medium text-gray-700 italic">
+                        "Menjadikan komunitas yang menaungi ekosistem talenta
+                        industri gim secara inklusif, inspiratif, dan inovatif hingga
+                        mampu menciptakan karya yang menjual dan berdaya saing
+                        agar terwujudnya aspek gim sebagai ekonomi kreatif."
+                    </p>
+                </div>
+
+                {/* Misi */}
+                <div className="mb-8 max-w-4xl mx-auto px-4">
+                    <h4 className="text-2xl sm:text-3xl font-bold mb-4 uppercase" style={{ color: 'var(--color-deep-blue)' }}>
+                        🚀 Misi Komunitas
+                    </h4>
+                    <div className="text-left bg-white rounded-xl p-6 border-2 border-gray-300 shadow-md">
+                        <ol className="space-y-3">
+                            <li className="flex items-start space-x-3">
+                                <span className="font-bold text-xl" style={{ color: 'var(--color-deep-blue)' }}>1.</span>
+                                <p className="text-gray-700 text-base sm:text-lg">
+                                    Mengintegrasikan komunitas gamer dan gamedev dalam kegiatan & proyek
+                                </p>
+                            </li>
+                            <li className="flex items-start space-x-3">
+                                <span className="font-bold text-xl" style={{ color: 'var(--color-deep-blue)' }}>2.</span>
+                                <p className="text-gray-700 text-base sm:text-lg">
+                                    Menciptakan ruang kolaborasi yang sehat antar talent dengan beragam latar belakang
+                                </p>
+                            </li>
+                            <li className="flex items-start space-x-3">
+                                <span className="font-bold text-xl" style={{ color: 'var(--color-deep-blue)' }}>3.</span>
+                                <p className="text-gray-700 text-base sm:text-lg">
+                                    Mengembangkan pengetahuan gim dan keberanian eksplorasi
+                                </p>
+                            </li>
+                            <li className="flex items-start space-x-3">
+                                <span className="font-bold text-xl" style={{ color: 'var(--color-deep-blue)' }}>4.</span>
+                                <p className="text-gray-700 text-base sm:text-lg">
+                                    Mengintegrasikan aspek bisnis dan produksi, agar terciptanya kreativitas berdaya saing
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
                 <a
                     href="#gabung"
                     className="inline-block bg-black text-white text-lg sm:text-xl font-bold py-3 px-6 sm:px-8 rounded-xl uppercase tracking-widest border-2 border-gray-300 shadow-lg hover:shadow-xl hover:scale-[1.02] transform transition-all duration-300"
