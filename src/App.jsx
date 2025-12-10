@@ -9,6 +9,7 @@ import DevelopGamesPage from './DevelopGamesPage.jsx'
 import ActivitiesPage from './ActivitiesPage.jsx'
 import GamesCollectionPage from './GamesCollectionPage.jsx'
 import LombaPage from './LombaPage.jsx'
+import AudioPlayer from './AudioPlayer.jsx'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -256,6 +257,7 @@ function App() {
           </div>
         </div>
       </footer>
+      <AudioPlayer />
     </div>
   )
 }

@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import nyusrukImage from '../assets/games/nyusruk.png'
 import lostEclipseImage from '../assets/games/losteclipse.jpg'
+import evalynImage from '../assets/games/evalyn.png'
+import candyImage from '../assets/games/candy.jpg'
+import everwinterImage from '../assets/games/everwinter.png'
+import infernoGaloreImage from '../assets/games/infernogalore.jpg'
 import itchioIcon from '../assets/iconsapp/itchio.png'
 import steamIcon from '../assets/iconsapp/steam.png'
 
@@ -23,10 +27,46 @@ function DevelopGamesPage() {
             title: "Lost Eclipse",
             category: "indie",
             console: "Multi Platform",
-            description: "After the city was shrouded with nightmares, you’ve been assigned to dive into this psychological survival-horror adventure to uncover its strange phenomenons that are affiliated to a certain science-tech corporation and bring them to justice. ",
+            description: "After the city was shrouded with nightmares, you've been assigned to dive into this psychological survival-horror adventure to uncover its strange phenomenons that are affiliated to a certain science-tech corporation and bring them to justice.",
             itchLink: "https://fabicomm-pro.itch.io/lost-eclipse",
             steamLink: "https://store.steampowered.com/app/3853160/Lost_Eclipse/",
             image: lostEclipseImage
+        },
+        {
+            id: 3,
+            title: "Evalyn: Plunderer of the Seven Seas",
+            category: "indie",
+            console: "PC",
+            description: "Play as Evalyn, a young pirate with a big passion. Guide her to collect many treasures across the Seven Seas! A top-down shooter with roguelike elements.",
+            link: "https://renuice-devs.itch.io/evalyn-plunderer-of-the-seven-seas",
+            image: evalynImage
+        },
+        {
+            id: 4,
+            title: "Inferno Galore",
+            category: "indie",
+            console: "PC",
+            description: "Destroy the cursed invaders and avoid the bullets of hell in this intense boss rush game. Specially made for Boss Rush Jam 2025.",
+            link: "https://cranium-basher.itch.io/inferno-galore",
+            image: infernoGaloreImage
+        },
+        {
+            id: 5,
+            title: "Candy - The Wanderer",
+            category: "indie",
+            console: "Multi Platform",
+            description: "Immerse yourself in the land full of wonders as a merchant with Candy. A Game Boy styled top-down adventure roguelike about a young elf opening her first shop.",
+            link: "https://fabicomm-pro.itch.io/candy-the-wanderer",
+            image: candyImage
+        },
+        {
+            id: 6,
+            title: "Everwinter",
+            category: "indie",
+            console: "PC",
+            description: "Raid the ice fortress enemy in this action survival game. A submission for MigJam #26 with pixel art graphics and challenging gameplay.",
+            link: "https://jelliut.itch.io/everwinter",
+            image: everwinterImage
         }
     ]
 
