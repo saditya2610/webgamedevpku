@@ -2,6 +2,7 @@ import './App.css'
 import logoGDP from '../assets/Logo GDP besar.png'
 import { Routes, Route, Link } from 'react-router-dom'
 import { useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import HomePage from './HomePage.jsx'
 import AboutPage from './AboutPage.jsx'
 import JoinPage from './JoinPage.jsx'
@@ -258,6 +259,7 @@ function App() {
         </div>
       </footer>
       <AudioPlayer />
+      <Analytics />
     </div>
   )
 }
