@@ -76,7 +76,7 @@ function AboutSection() {
 
                 <div className="mt-10 max-w-6xl mx-auto px-4">
                     <h4 className="text-2xl sm:text-3xl font-bold mb-4 uppercase" style={{ color: COLORS.deepBlue }}>
-                        📕 Buku Merah (Interaktif)
+                        📕 Buku Merah 
                     </h4>
                     <PdfFlipbook
                         src={bukuMerahPdf}
