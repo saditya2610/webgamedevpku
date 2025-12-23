@@ -1,14 +1,16 @@
+import { Section, SectionTitle, Card, CardHeader, CardBody, Button, FeatureList } from './components/UI.jsx'
+import { COLORS, TYPOGRAPHY, GRADIENTS } from './constants/styles.js'
+import PdfFlipbook from './components/PdfFlipbook.jsx'
+import bukuMerahPdf from '../assets/bukumerah/Buku Merah Gamedev PKU (Publik).pdf'
+
 function AboutSection() {
     return (
         <>
-            <section
-                id="tentang"
-                className="mt-16 md:mt-32 p-6 sm:p-8 md:p-10 rounded-2xl bg-gray-100 border-4 border-gray-300 shadow-xl text-center"
-            >
+            <Section id="tentang">
                 <h3
                     className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 uppercase pixel-text px-4"
                     style={{
-                        color: 'var(--color-deep-blue)',
+                        color: COLORS.deepBlue,
                         textShadow: '2px 2px 0 black',
                     }}
                 >
@@ -17,7 +19,7 @@ function AboutSection() {
 
                 {/* Visi */}
                 <div className="mb-8 max-w-4xl mx-auto px-4">
-                    <h4 className="text-2xl sm:text-3xl font-bold mb-4 uppercase" style={{ color: 'var(--color-deep-blue)' }}>
+                    <h4 className="text-2xl sm:text-3xl font-bold mb-4 uppercase" style={{ color: COLORS.deepBlue }}>
                         🎯 Visi
                     </h4>
                     <p className="text-lg sm:text-xl font-medium text-gray-700 italic">
@@ -63,13 +65,26 @@ function AboutSection() {
                     </div>
                 </div>
 
-                <a
+                <Button
                     href="#gabung"
-                    className="inline-block bg-black text-white text-lg sm:text-xl font-bold py-3 px-6 sm:px-8 rounded-xl uppercase tracking-widest border-2 border-gray-300 shadow-lg hover:shadow-xl hover:scale-[1.02] transform transition-all duration-300"
+                    variant="secondary"
+                    size="large"
+                    className="rounded-xl"
                 >
                     Ayo Mulai Petualanganmu!
-                </a>
-            </section>
+                </Button>
+
+                <div className="mt-10 max-w-6xl mx-auto px-4">
+                    <h4 className="text-2xl sm:text-3xl font-bold mb-4 uppercase" style={{ color: COLORS.deepBlue }}>
+                        📕 Buku Merah (Interaktif)
+                    </h4>
+                    <PdfFlipbook
+                        src={bukuMerahPdf}
+                        title="Buku Merah Gamedev PKU (Publik)"
+                        initialPage={1}
+                    />
+                </div>
+            </Section>
 
             <section className="mt-12 sm:mt-16 mb-16 md:mb-20 px-4">
                 <div className="max-w-7xl mx-auto px-4">
