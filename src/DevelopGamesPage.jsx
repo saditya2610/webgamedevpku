@@ -5,6 +5,7 @@ import evalynImage from '../assets/games/evalyn.png'
 import candyImage from '../assets/games/candy.jpg'
 import everwinterImage from '../assets/games/everwinter.png'
 import infernoGaloreImage from '../assets/games/infernogalore.jpg'
+// import coinnerImage from '../assets/games/coinner.png'
 import itchioIcon from '../assets/iconsapp/itchio.png'
 import steamIcon from '../assets/iconsapp/steam.png'
 
@@ -67,6 +68,15 @@ function DevelopGamesPage() {
             description: "Raid the ice fortress enemy in this action survival game. A submission for MigJam #26 with pixel art graphics and challenging gameplay.",
             link: "https://jelliut.itch.io/everwinter",
             image: everwinterImage
+        },
+        {
+            id: 7,
+            title: "Coinner",
+            category: "indie",
+            console: "PC",
+            description: "Experience a high-stakes chase where you must constantly run from a pursuing monster. While trying to escape, your main objective is to collect every coin you find along the way. Stay fast, outrun the beast, and gather as many coins as possible to achieve the highest score",
+            link: "https://one-project.itch.io/coinner",
+            image: "https://img.itch.zone/aW1hZ2UvNDIyOTg0Ny8yNTIwMjU3Ni5wbmc=/original/DEcqAX.png"
         }
     ]
 
