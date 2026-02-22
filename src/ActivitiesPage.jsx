@@ -25,6 +25,19 @@ const activitiesData = [
         participants: 25
     },
     {
+        id: 6,
+        src: 'https://instagram.fpku7-1.fna.fbcdn.net/v/t51.82787-15/630971786_17853704958666026_2593316089596153080_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzgyODUzNzU3MTQwMDcyOTczMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzMzF4MTc3NC5zZHIuQzMifQ%3D%3D&_nc_ohc=kzOn5_aYeFQQ7kNvwHqhDPF&_nc_oc=AdnmmRICC-5TDM5l6piEqXliKwCesPcxqiJtahMoqXgWl36IjstK-AtFjsX3m36i3o8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fpku7-1.fna&_nc_gid=nDOOy25zzuvKCyis0mE8yg&oh=00_Afu1uAD3jaTZrqrEijPCng8lVt2HZjYAeYNT_-i_9njWHA&oe=69A03A25',
+        title: 'Ngulik Talk Vol. 1: From Gamer to Maker',
+        date: '06 Februari 2026',
+        description: 'Talkshow tentang perjalanan dari gamer menjadi game developer',
+        fullDescription: 'Bosen cuma jadi player? Saatnya naik level jadi MAKER! 🎮🔥 Pernah kepikiran nggak sih gimana proses di balik layar pembuatan sebuah game? Dari sekadar hobi main, sampai bisa menciptakan karya sendiri yang bahkan bisa dimainkan di konsol lawas kayak Game Boy! 🕹️ Di Ngulik Talk Vol. 1: From Gamer to Maker, kita bakal bedah tuntas "dapur" Game Dev bareng: 🎙️ Speaker: Ar. Fadel Dzahabi, S.Ars (Game Designer & Dev "Lost Eclipse") 🎤 Host: Bunga Yuliana (Community Moderator) 📅 Jumat, 06 Februari 2026 ⏰ 19.30 WIB - Selesai 📍 Loka Tara Pekanbaru (Jl. Paus Ujung No. 05)',
+        category: 'Talkshow',
+        participants: 0,
+        gallery: [
+            'https://instagram.fpku7-1.fna.fbcdn.net/v/t51.82787-15/630971786_17853704958666026_2593316089596153080_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzgyODUzNzU3MTQwMDcyOTczMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEzMzF4MTc3NC5zZHIuQzMifQ%3D%3D&_nc_ohc=kzOn5_aYeFQQ7kNvwHqhDPF&_nc_oc=AdnmmRICC-5TDM5l6piEqXliKwCesPcxqiJtahMoqXgWl36IjstK-AtFjsX3m36i3o8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fpku7-1.fna&_nc_gid=nDOOy25zzuvKCyis0mE8yg&oh=00_Afu1uAD3jaTZrqrEijPCng8lVt2HZjYAeYNT_-i_9njWHA&oe=69A03A25'
+        ]
+    },
+    {
         id: 5,
         src: roadTo2ndImg,
         title: 'Road to 2nd Gathering GamedevPKU x Uma Musume PKU',
@@ -100,7 +113,7 @@ function ActivitiesPage() {
     const [selectedActivity, setSelectedActivity] = useState(null)
     const [playingVideoIndex, setPlayingVideoIndex] = useState(null)
 
-    const categories = ['All', 'Gathering', 'Collaboration', 'Tournament', 'Showcase']
+    const categories = ['All', 'Gathering', 'Collaboration', 'Tournament', 'Showcase', 'Talkshow']
 
     const filteredActivities = activitiesData.filter(activity => {
         const matchesCategory = selectedCategory === 'All' || activity.category === selectedCategory
@@ -350,7 +363,7 @@ function ActivitiesPage() {
                                                     <img
                                                         src={imgSrc}
                                                         alt={`${selectedActivity.title} gallery ${idx + 1}`}
-                                                        className="w-full h-40 md:h-48 object-cover hover:scale-105 transition-transform duration-300"
+                                                        className="w-full h-40 md:h-48 object-contain hover:scale-105 transition-transform duration-300 bg-gray-100"
                                                     />
                                                 </div>
                                             ))}

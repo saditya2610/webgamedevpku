@@ -18,6 +18,13 @@ function LombaPage() {
     const [dragOffset, setDragOffset] = useState(0)
     const modalRef = useRef(null)
 
+    // Check if event is finished
+    const isEventFinished = () => {
+        const eventDate = new Date('2025-12-27')
+        const currentDate = new Date()
+        return currentDate > eventDate
+    }
+
     const nextImage = () => {
         setCurrentImageIndex((prev) => (prev + 1) % challengeImages.length)
     }
@@ -194,6 +201,11 @@ function LombaPage() {
                                     <span className="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
                                         27 Desember 2025
                                     </span>
+                                    {isEventFinished() && (
+                                        <span className="bg-gray-600 text-white px-3 py-1 rounded-full text-xs font-semibold animate-pulse">
+                                            ✅ Sudah Selesai
+                                        </span>
+                                    )}
                                 </div>
                             </div>
 
