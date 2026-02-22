@@ -11,6 +11,7 @@ import umamusumeLogo from '../assets/umamusumepku.png'
 import umamusumeSumateraLogo from '../assets/umamusumesumatera.png'
 import baletiamLogo from '../assets/baletiam.jpg'
 import maimaiLogo from '../assets/maimailogo.jpeg'
+import endfieldpkuLogo from '../assets/logo enfieldpku.png'
 
 function PartnersSection() {
     return (
@@ -127,6 +128,12 @@ function PartnersSection() {
                         <img
                             src={maimaiLogo}
                             alt="Maimai"
+                            className="h-10 sm:h-12 md:h-16 w-auto object-contain mx-auto"
+                        />
+                    </div><div className="p-3 sm:p-4 md:p-6 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <img
+                            src={endfieldpkuLogo}
+                            alt="Endfield PKU"
                             className="h-10 sm:h-12 md:h-16 w-auto object-contain mx-auto"
                         />
                     </div>
