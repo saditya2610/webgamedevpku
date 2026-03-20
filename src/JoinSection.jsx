@@ -84,7 +84,7 @@ function JoinSection() {
                         </p>
                         <div className="qr-code-box mx-auto">
                             <img
-                                src={discordQr}
+                                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://discord.gg/nZhdut6B2s"
                                 alt="QR Code Discord Server"
                                 className="w-32 h-32 sm:w-40 sm:h-40 object-cover"
                             />
