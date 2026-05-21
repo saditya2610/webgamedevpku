@@ -103,7 +103,7 @@ function AudioPlayer() {
                 onPause={() => setIsPlaying(false)}
             />
 
-            <div className="fixed bottom-4 right-4 bg-black/80 backdrop-blur-md rounded-lg p-3 shadow-2xl border border-cyan-400/30 z-40">
+            <div className="print:hidden fixed bottom-4 right-4 bg-black/80 backdrop-blur-md rounded-lg p-3 shadow-2xl border border-cyan-400/30 z-40">
                 <div className="flex items-center space-x-3">
                     <button
                         onClick={togglePlayPause}
