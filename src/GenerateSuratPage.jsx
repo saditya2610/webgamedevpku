@@ -1,5 +1,44 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import logoGDP from '../assets/Logo GDP besar.png';
+
+const RichTextEditor = ({ value, onChange, placeholder, minHeight = "80px" }) => {
+    const editorRef = useRef(null);
+
+    useEffect(() => {
+        if (editorRef.current && value !== editorRef.current.innerHTML && document.activeElement !== editorRef.current) {
+            editorRef.current.innerHTML = value;
+        }
+    }, [value]);
+
+    const handleInput = () => {
+        onChange(editorRef.current.innerHTML);
+    };
+
+    const format = (command) => {
+        document.execCommand(command, false, null);
+        editorRef.current.focus();
+        handleInput();
+    };
+
+    return (
+        <div className="w-full mb-4 bg-black/50 border border-cyan-800 rounded focus-within:border-cyan-400 focus-within:bg-black/70 flex flex-col overflow-hidden">
+            <div className="flex items-center space-x-1 p-1.5 border-b border-cyan-800/50 bg-black/60">
+                <button type="button" onClick={() => format('bold')} className="w-7 h-7 flex items-center justify-center bg-white/10 hover:bg-cyan-500 hover:text-black rounded text-white font-bold text-sm transition-colors" title="Tebal (Ctrl+B)">B</button>
+                <button type="button" onClick={() => format('italic')} className="w-7 h-7 flex items-center justify-center bg-white/10 hover:bg-cyan-500 hover:text-black rounded text-white italic text-sm transition-colors" title="Miring (Ctrl+I)">I</button>
+                <button type="button" onClick={() => format('underline')} className="w-7 h-7 flex items-center justify-center bg-white/10 hover:bg-cyan-500 hover:text-black rounded text-white underline text-sm transition-colors" title="Garis Bawah (Ctrl+U)">U</button>
+                <div className="text-gray-400 text-xs ml-2 italic">{placeholder}</div>
+            </div>
+            <div 
+                ref={editorRef}
+                contentEditable
+                onInput={handleInput}
+                onBlur={handleInput}
+                className="w-full p-3 text-white focus:outline-none text-sm"
+                style={{ minHeight }}
+            />
+        </div>
+    );
+};
 
 const GenerateSuratPage = () => {
     const [formData, setFormData] = useState({
@@ -16,6 +55,10 @@ const GenerateSuratPage = () => {
         tempatTanggalDibuat: 'Pekanbaru, 13 Mei 2026',
         namaPenandatangan: 'Ar. Fadel Dzahabi, S.Ars.',
         jabatanPenandatangan: 'Chairman Gamedev PKU',
+        paragrafPembuka: 'Menanggapi surat permohonan terkait kegiatan Narasumber dan Guru Tamu, maka dengan ini saya selaku perwakilan Gamedev PKU menyampaikan bahwa kami <b>menerima dan bersedia</b> untuk menghadiri serta mendampingi kegiatan workshop tersebut.',
+        teksPengantarRincian: 'Adapun rincian detail waktu, tempat, dan pelaksanaan kegiatan yang telah kami konfirmasi adalah sebagai berikut:',
+        paragrafPenutup1: 'Kami berharap materi yang disampaikan nantinya dapat memberikan wawasan baru, memotivasi para peserta, serta mempererat sinergi antara dunia pendidikan dengan industri game.',
+        paragrafPenutup2: 'Demikian surat balasan ini kami sampaikan. Atas perhatiannya, kami ucapkan terima kasih.',
         materi: [
             { id: 1, target: 'Kelas PPLG', materi: 'Pengenalan Industri Game, Pengenalan Engine Game, Reverse Engineering Karya Narasumber, dan Pembuatan Variasi Game Sederhana.' },
             { id: 2, target: 'Kelas DKV', materi: 'Pengenalan Industri Game, Pengenalan Engine Game, Pengenalan Aset Game, dan Penerapan Aset Game.' }
@@ -140,6 +183,14 @@ const GenerateSuratPage = () => {
                     </div>
 
                     <div className="pt-4 border-t border-white/20">
+                        <label className="block text-sm font-semibold mb-2 text-yellow-300">Isi Surat (Pilih teks lalu klik tombol B/I/U di bawah)</label>
+                        <RichTextEditor value={formData.paragrafPembuka} onChange={(val) => setFormData({...formData, paragrafPembuka: val})} placeholder="Paragraf Pembuka" minHeight="100px" />
+                        <RichTextEditor value={formData.teksPengantarRincian} onChange={(val) => setFormData({...formData, teksPengantarRincian: val})} placeholder="Teks Pengantar Rincian" minHeight="60px" />
+                        <RichTextEditor value={formData.paragrafPenutup1} onChange={(val) => setFormData({...formData, paragrafPenutup1: val})} placeholder="Paragraf Penutup 1" minHeight="80px" />
+                        <RichTextEditor value={formData.paragrafPenutup2} onChange={(val) => setFormData({...formData, paragrafPenutup2: val})} placeholder="Paragraf Penutup 2" minHeight="60px" />
+                    </div>
+
+                    <div className="pt-4 border-t border-white/20">
                         <label className="block text-sm font-semibold mb-1 text-yellow-300">Penutup & Tanda Tangan</label>
                         <input type="text" name="tempatTanggalDibuat" value={formData.tempatTanggalDibuat} onChange={handleInputChange} placeholder="Tempat & Tanggal (Pekanbaru, ...)" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
                         <input type="text" name="jabatanPenandatangan" value={formData.jabatanPenandatangan} onChange={handleInputChange} placeholder="Jabatan Penandatangan" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
@@ -196,21 +247,17 @@ const GenerateSuratPage = () => {
                     {/* Tujuan */}
                     <div className="text-[12pt] leading-relaxed mb-4">
                         <p><strong>Yth.</strong></p>
-                        <p><strong>Kepala Sekolah {formData.instansi}</strong></p>
+                        <p><strong> {formData.instansi}</strong></p>
                         <p>di Pekanbaru</p>
                     </div>
 
                     {/* Isi Surat */}
                     <div className="text-[12pt] leading-relaxed text-justify mb-4">
-                        <p className="mb-4">Assalamu’alaikum Wr. Wb.</p>
+                        <p className="mb-4" dangerouslySetInnerHTML={{ __html: formData.paragrafSalam }}></p>
                         
-                        <p className="mb-4">
-                            Menanggapi surat permohonan dari {formData.instansi} dengan Nomor: {formData.nomorInstansi} pada {formData.tanggalInstansi} terkait permohonan kegiatan Narasumber dan Guru Tamu, maka dengan ini saya, <strong>{formData.namaGdpku}</strong>, selaku <strong>{formData.jabatanGdpku}</strong>, menyampaikan bahwa kami <strong>menerima dan bersedia</strong> untuk menghadiri serta mendampingi kegiatan workshop.
-                        </p>
+                        <p className="mb-4" dangerouslySetInnerHTML={{ __html: formData.paragrafPembuka }}></p>
 
-                        <p className="mb-4">
-                            Adapun rincian detail waktu, tempat, dan pelaksanaan kegiatan yang telah kami konfirmasi adalah sebagai berikut:
-                        </p>
+                        <p className="mb-4" dangerouslySetInnerHTML={{ __html: formData.teksPengantarRincian }}></p>
 
                         <div className="pl-8 mb-4">
                             <table className="w-full">
@@ -241,13 +288,9 @@ const GenerateSuratPage = () => {
                             </table>
                         </div>
 
-                        <p className="mb-4">
-                            Kami berharap materi yang disampaikan nantinya dapat memberikan wawasan baru, memotivasi para siswa di program keahlian {formData.materi.map(m => m.target.replace('Kelas ', '')).join(' dan ')}, serta mempererat sinergi antara dunia pendidikan dengan industri game.
-                        </p>
+                        <p className="mb-4" dangerouslySetInnerHTML={{ __html: formData.paragrafPenutup1 }}></p>
                         
-                        <p className="mb-12">
-                            Demikian surat balasan ini kami sampaikan. Atas perhatiannya, kami ucapkan terima kasih.
-                        </p>
+                        <p className="mb-12" dangerouslySetInnerHTML={{ __html: formData.paragrafPenutup2 }}></p>
                     </div>
 
                     {/* Tanda Tangan */}
