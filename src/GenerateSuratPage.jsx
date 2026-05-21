@@ -93,44 +93,44 @@ const GenerateSuratPage = () => {
             
             {/* Form Section - Hidden on Print */}
             <div className="w-full lg:w-1/3 print:hidden bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-xl overflow-y-auto max-h-[80vh]">
-                <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/20 pb-2">Form Data Surat</h2>
+                <h2 className="text-2xl font-bold text-black mb-6 border-b border-black/20 pb-2">Form Data Surat</h2>
                 
                 <div className="space-y-4 text-white">
                     <div>
                         <label className="block text-sm font-semibold mb-1 text-cyan-300">Nomor Surat Balasan</label>
-                        <input type="text" name="nomor" value={formData.nomor} onChange={handleInputChange} className="w-full p-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
+                        <input type="text" name="nomor" value={formData.nomor} onChange={handleInputChange} className="w-full p-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
                     </div>
                     <div>
                         <label className="block text-sm font-semibold mb-1 text-cyan-300">Hal</label>
-                        <input type="text" name="hal" value={formData.hal} onChange={handleInputChange} className="w-full p-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
+                        <input type="text" name="hal" value={formData.hal} onChange={handleInputChange} className="w-full p-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
                     </div>
                     
                     <div className="pt-4 border-t border-white/20">
                         <label className="block text-sm font-semibold mb-1 text-yellow-300">Data Pemohon / Instansi</label>
-                        <input type="text" name="instansi" value={formData.instansi} onChange={handleInputChange} placeholder="Nama Instansi" className="w-full p-2 mb-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
-                        <input type="text" name="nomorInstansi" value={formData.nomorInstansi} onChange={handleInputChange} placeholder="Nomor Surat Instansi" className="w-full p-2 mb-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
-                        <input type="text" name="tanggalInstansi" value={formData.tanggalInstansi} onChange={handleInputChange} placeholder="Tanggal Surat Instansi" className="w-full p-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
+                        <input type="text" name="instansi" value={formData.instansi} onChange={handleInputChange} placeholder="Nama Instansi" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
+                        <input type="text" name="nomorInstansi" value={formData.nomorInstansi} onChange={handleInputChange} placeholder="Nomor Surat Instansi" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
+                        <input type="text" name="tanggalInstansi" value={formData.tanggalInstansi} onChange={handleInputChange} placeholder="Tanggal Surat Instansi" className="w-full p-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
                     </div>
 
                     <div className="pt-4 border-t border-white/20">
                         <label className="block text-sm font-semibold mb-1 text-yellow-300">Data Pihak Gamedev PKU</label>
-                        <input type="text" name="namaGdpku" value={formData.namaGdpku} onChange={handleInputChange} placeholder="Nama Perwakilan" className="w-full p-2 mb-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
-                        <input type="text" name="jabatanGdpku" value={formData.jabatanGdpku} onChange={handleInputChange} placeholder="Jabatan" className="w-full p-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
+                        <input type="text" name="namaGdpku" value={formData.namaGdpku} onChange={handleInputChange} placeholder="Nama Perwakilan" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
+                        <input type="text" name="jabatanGdpku" value={formData.jabatanGdpku} onChange={handleInputChange} placeholder="Jabatan" className="w-full p-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
                     </div>
 
                     <div className="pt-4 border-t border-white/20">
                         <label className="block text-sm font-semibold mb-1 text-yellow-300">Detail Kegiatan</label>
-                        <input type="text" name="waktuKegiatan" value={formData.waktuKegiatan} onChange={handleInputChange} placeholder="Hari / Tanggal" className="w-full p-2 mb-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
-                        <input type="text" name="jamKegiatan" value={formData.jamKegiatan} onChange={handleInputChange} placeholder="Waktu (Jam)" className="w-full p-2 mb-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
-                        <input type="text" name="tempatKegiatan" value={formData.tempatKegiatan} onChange={handleInputChange} placeholder="Tempat" className="w-full p-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
+                        <input type="text" name="waktuKegiatan" value={formData.waktuKegiatan} onChange={handleInputChange} placeholder="Hari / Tanggal" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
+                        <input type="text" name="jamKegiatan" value={formData.jamKegiatan} onChange={handleInputChange} placeholder="Waktu (Jam)" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
+                        <input type="text" name="tempatKegiatan" value={formData.tempatKegiatan} onChange={handleInputChange} placeholder="Tempat" className="w-full p-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
                     </div>
 
                     <div className="pt-4 border-t border-white/20">
                         <label className="block text-sm font-semibold mb-1 text-yellow-300">Materi / Sasaran</label>
                         {formData.materi.map((item, index) => (
                             <div key={item.id} className="mb-4 bg-black/20 p-3 rounded border border-white/10">
-                                <input type="text" value={item.target} onChange={(e) => handleMateriChange(index, 'target', e.target.value)} placeholder="Target (Materi Kelas X)" className="w-full p-2 mb-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
-                                <textarea value={item.materi} onChange={(e) => handleMateriChange(index, 'materi', e.target.value)} placeholder="Deskripsi Materi" className="w-full p-2 mb-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none text-sm h-20" />
+                                <input type="text" value={item.target} onChange={(e) => handleMateriChange(index, 'target', e.target.value)} placeholder="Target (Materi Kelas X)" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
+                                <textarea value={item.materi} onChange={(e) => handleMateriChange(index, 'materi', e.target.value)} placeholder="Deskripsi Materi" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none text-sm h-20" />
                                 <button type="button" onClick={() => removeMateri(index)} className="text-red-400 text-sm hover:text-red-300 transition-colors">Hapus Materi</button>
                             </div>
                         ))}
@@ -141,12 +141,12 @@ const GenerateSuratPage = () => {
 
                     <div className="pt-4 border-t border-white/20">
                         <label className="block text-sm font-semibold mb-1 text-yellow-300">Penutup & Tanda Tangan</label>
-                        <input type="text" name="tempatTanggalDibuat" value={formData.tempatTanggalDibuat} onChange={handleInputChange} placeholder="Tempat & Tanggal (Pekanbaru, ...)" className="w-full p-2 mb-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
-                        <input type="text" name="jabatanPenandatangan" value={formData.jabatanPenandatangan} onChange={handleInputChange} placeholder="Jabatan Penandatangan" className="w-full p-2 mb-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
-                        <input type="text" name="namaPenandatangan" value={formData.namaPenandatangan} onChange={handleInputChange} placeholder="Nama Lengkap Penandatangan" className="w-full p-2 mb-4 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none" />
+                        <input type="text" name="tempatTanggalDibuat" value={formData.tempatTanggalDibuat} onChange={handleInputChange} placeholder="Tempat & Tanggal (Pekanbaru, ...)" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
+                        <input type="text" name="jabatanPenandatangan" value={formData.jabatanPenandatangan} onChange={handleInputChange} placeholder="Jabatan Penandatangan" className="w-full p-2 mb-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
+                        <input type="text" name="namaPenandatangan" value={formData.namaPenandatangan} onChange={handleInputChange} placeholder="Nama Lengkap Penandatangan" className="w-full p-2 mb-4 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none" />
                         
                         <label className="block text-sm font-semibold mb-1 text-cyan-300">Upload Cap / Tanda Tangan (Opsional)</label>
-                        <input type="file" accept="image/*" onChange={handleImageUpload} className="w-full p-2 bg-black/30 border border-cyan-800 rounded focus:border-cyan-400 focus:outline-none text-sm" />
+                        <input type="file" accept="image/*" onChange={handleImageUpload} className="w-full p-2 bg-black/50 border border-cyan-800 rounded text-white placeholder-gray-400 focus:border-cyan-400 focus:bg-black/70 focus:outline-none text-sm" />
                     </div>
 
                 </div>
