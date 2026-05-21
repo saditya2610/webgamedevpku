@@ -24,7 +24,8 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen, isActivitiesDropdownOpen, setIs
 
     const activitiesLinks = [
         { to: '/activities', label: 'Arsip Aktivitas' },
-        { to: '/lomba', label: 'Challenge' }
+        { to: '/lomba', label: 'Challenge' },
+        { to: '/generate-surat', label: 'Generate Surat' }
     ];
 
     return (
