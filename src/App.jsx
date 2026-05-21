@@ -10,6 +10,7 @@ import ActivitiesPage from './ActivitiesPage.jsx'
 import GamesCollectionPage from './GamesCollectionPage.jsx'
 import LombaPage from './LombaPage.jsx'
 import GenerateSuratPage from './GenerateSuratPage.jsx'
+import ResourcePage from './ResourcePage.jsx'
 import AudioPlayer from './AudioPlayer.jsx'
 import Navigation from './components/Navigation.jsx'
 import { GRADIENTS } from './constants/styles.js'
@@ -39,6 +40,7 @@ function App() {
           <Route path="/lomba" element={<LombaPage />} />
           <Route path="/koleksi-games" element={<GamesCollectionPage />} />
           <Route path="/generate-surat" element={<GenerateSuratPage />} />
+          <Route path="/resource" element={<ResourcePage />} />
         </Routes>
       </main>
 
