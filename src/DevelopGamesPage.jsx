@@ -77,6 +77,33 @@ function DevelopGamesPage() {
             description: "Experience a high-stakes chase where you must constantly run from a pursuing monster. While trying to escape, your main objective is to collect every coin you find along the way. Stay fast, outrun the beast, and gather as many coins as possible to achieve the highest score",
             link: "https://one-project.itch.io/coinner",
             image: "https://img.itch.zone/aW1hZ2UvNDIyOTg0Ny8yNTIwMjU3Ni5wbmc=/original/DEcqAX.png"
+        },
+        {
+            id: 8,
+            title: "Cardlatro",
+            category: "indie",
+            console: "Multi Platform",
+            description: "Cardlatro is not your average poker game. It's a Roguelike Deckbuilder where you must use traditional poker hands combined with the game-breaking effects of Joker cards to achieve unimaginably high scores (Chips).",
+            link: "https://saditya2610.itch.io/cardlatro",
+            image: "https://img.itch.zone/aW1nLzI3NDIyMDA0LnBuZw==/original/TQ4ybv.png"
+        },
+        {
+            id: 9,
+            title: "Clash of Beasts",
+            category: "indie",
+            console: "Multi Platform",
+            description: "A small game prototype of UNO + Monster Elemental + Roguelike Attacks! Defeat the monster in the center of the arena before the AI does.",
+            link: "https://fabicomm-pro.itch.io/clash-of-beasts",
+            image: "https://img.itch.zone/aW1nLzI3NDA5MjA4LmpwZw==/original/5sl1hB.jpg"
+        },
+        {
+            id: 10,
+            title: "egg rice with soy sauce",
+            category: "indie",
+            console: "PC",
+            description: "A simple midnight meal turns into a nightmare. Play this short horror comedy game where someone who came home from working overtime and felt hungry finally cooked rice with egg and sweet soy sauce, but something happened.",
+            link: "https://one-project.itch.io/egg-rice-with-soy-sauce",
+            image: "https://img.itch.zone/aW1nLzI2ODM2NjM4LmpwZw==/original/FDm90g.jpg"
         }
     ]
 
