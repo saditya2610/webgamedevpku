@@ -104,6 +104,15 @@ function DevelopGamesPage() {
             description: "A simple midnight meal turns into a nightmare. Play this short horror comedy game where someone who came home from working overtime and felt hungry finally cooked rice with egg and sweet soy sauce, but something happened.",
             link: "https://one-project.itch.io/egg-rice-with-soy-sauce",
             image: "https://img.itch.zone/aW1nLzI2ODM2NjM4LmpwZw==/original/FDm90g.jpg"
+        },
+        {
+            id: 11,
+            title: "Malpractice Crypt",
+            category: "indie",
+            console: "Multi Platform",
+            description: "Jadilah Apoteker Jaga Klinis di bangsal IGD! Skrining resep secepat kilat, mainkan kartu intervensi, dan cegah Medication Error sebelum terjadi dalam game simulasi klinis roguelite ini.",
+            link: "https://saditya2610.itch.io/malpractice-crypt",
+            image: "https://img.itch.zone/aW1nLzI3NjI5MTU5LnBuZw==/original/q9PSKW.png"
         }
     ]
 
