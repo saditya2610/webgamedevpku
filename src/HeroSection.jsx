@@ -25,21 +25,21 @@ function HeroSection() {
                     />
                     
                     <div className="relative z-[1] flex flex-col items-center text-center">
-                        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-6 leading-tight game-title transform transition-transform duration-500">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight game-title transform transition-transform duration-500 tracking-wide group-hover:scale-105">
                             <span 
-                                className="inline-block text-[#FF00FF] drop-shadow-[4px_4px_0_rgba(0,0,0,1)]" 
-                                style={{ WebkitTextStroke: '1.5px black' }}
+                                className="inline-block text-gray-100 drop-shadow-[2px_2px_0_rgba(0,0,0,1)] sm:drop-shadow-[3px_3px_0_rgba(0,0,0,1)] transition-all duration-300 hover:-translate-y-1 hover:rotate-2 hover:text-white cursor-default" 
+                                style={{ WebkitTextStroke: '1px black' }}
                             >
                                 Jangan Lupa Main di
                             </span>
                             <br />
                             <span 
-                                className="inline-block mt-2 sm:mt-4 text-[#00FF00] drop-shadow-[5px_5px_0_rgba(0,0,0,1)]" 
-                                style={{ WebkitTextStroke: '2px black' }}
+                                className="inline-block mt-2 sm:mt-3 bg-gradient-to-b from-yellow-200 via-amber-400 to-orange-500 text-transparent bg-clip-text drop-shadow-[3px_3px_0_rgba(0,0,0,1)] sm:drop-shadow-[4px_4px_0_rgba(0,0,0,1)] transition-all duration-300 hover:scale-110 hover:-rotate-2 hover:drop-shadow-[6px_6px_0_rgba(0,0,0,1)] hover:from-yellow-100 hover:to-orange-400 cursor-default" 
+                                style={{ WebkitTextStroke: '1.5px black' }}
                             >
                                 GAMEDEVPKU
                             </span>
-                        </h2>
+                        </h1>
                         
                         <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-10 font-bold max-w-2xl leading-relaxed">
                             Komunitas Pengembang Game di Pekanbaru, Riau.

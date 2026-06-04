@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import zeldaSong from '../assets/song/Zelda\'s Lullaby - The Legend of Zelda_ Skyward Sword.mp3'
 import ffixSong from '../assets/song/FFIX - Melodies of Life (Music box) [Extended].mp3'
 import dragonQuestSong from '../assets/song/Overture - 1 - Dragon Quest III HD 2D Remake Switch OST Soundtrack.mp3'
+import ffxSong from '../assets/song/Calm Before The Storm FINAL FANTASY X Original Soundtrack 【Audio】.mp3'
 
 const playlist = [
     {
@@ -21,6 +22,12 @@ const playlist = [
         title: "Overture",
         artist: "Dragon Quest III HD-2D",
         src: dragonQuestSong
+    },
+    {
+        id: 4,
+        title: "Calm Before The Storm",
+        artist: "Final Fantasy X",
+        src: ffxSong
     }
 ]
 
