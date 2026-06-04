@@ -61,18 +61,26 @@ function AudioPlayer() {
         
         const handleEnded = () => {
             setCurrentSongIndex(prev => {
-                const nextIndex = (prev + 1) % playlist.length;
+                let nextIndex = prev;
+                if (playlist.length > 1) {
+                    do {
+                        nextIndex = Math.floor(Math.random() * playlist.length);
+                    } while (nextIndex === prev);
+                }
                 localStorage.setItem('audioCurrentSongIndex', nextIndex.toString());
                 localStorage.setItem('audioCurrentTime', '0');
                 return nextIndex;
             });
-            // We'll let the other useEffect handle playing the new song
-            if (isPlaying) {
-                // Ensure it plays when changed
-                setTimeout(() => {
-                    audioRef.current?.play().catch(console.error);
-                }, 100);
-            }
+            
+            // Unconditionally play next song (timeout ensures src has updated)
+            setTimeout(() => {
+                if (audioRef.current) {
+                    audioRef.current.play().then(() => {
+                        setIsPlaying(true);
+                        localStorage.setItem('audioIsPlaying', 'true');
+                    }).catch(console.error);
+                }
+            }, 100);
         }
 
         audio.addEventListener('loadedmetadata', setAudioData)
@@ -171,7 +179,15 @@ function AudioPlayer() {
 
     const playNext = (e) => {
         if (e) e.stopPropagation();
-        setCurrentSongIndex((prev) => (prev + 1) % playlist.length)
+        setCurrentSongIndex((prev) => {
+            let nextIndex = prev;
+            if (playlist.length > 1) {
+                do {
+                    nextIndex = Math.floor(Math.random() * playlist.length);
+                } while (nextIndex === prev);
+            }
+            return nextIndex;
+        });
         if (!isPlaying) {
             setIsPlaying(true)
             localStorage.setItem('audioIsPlaying', 'true')
@@ -180,7 +196,15 @@ function AudioPlayer() {
 
     const playPrev = (e) => {
         if (e) e.stopPropagation();
-        setCurrentSongIndex((prev) => (prev - 1 + playlist.length) % playlist.length)
+        setCurrentSongIndex((prev) => {
+            let nextIndex = prev;
+            if (playlist.length > 1) {
+                do {
+                    nextIndex = Math.floor(Math.random() * playlist.length);
+                } while (nextIndex === prev);
+            }
+            return nextIndex;
+        });
         if (!isPlaying) {
             setIsPlaying(true)
             localStorage.setItem('audioIsPlaying', 'true')
