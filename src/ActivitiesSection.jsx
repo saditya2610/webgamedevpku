@@ -6,12 +6,24 @@ import activityImg3 from '../assets/IMG_20251116_141859.jpg'
 import gatheringImg from '../assets/gathering1st/Foto bersama GamedevPKU.jpeg'
 import gameDevIcon from '../assets/game-development.png'
 import gameConsoleIcon from '../assets/game-console.png'
+import smkVideo from '../assets/SMKMUDA/VID_20260521_160228.mp4'
+import smkImg1 from '../assets/SMKMUDA/IMG_20260520_085623.webp'
+import smkImg2 from '../assets/SMKMUDA/IMG_20260520_094103.webp'
+import smkImg3 from '../assets/SMKMUDA/IMG_20260520_101448.webp'
+import smkImg4 from '../assets/SMKMUDA/IMG_20260520_121927.webp'
+import smkImg5 from '../assets/SMKMUDA/IMG_20260521_081925.webp'
 
 const activityData = [
     { src: activityImg1, title: 'GamedevPKU x Umamusume Pekanbaru', date: 'November 2025', description: '2nd Gathering GamedevPKU collabs with Uma Musume and Other Communities games' },
     { src: activityImg2, title: 'Trophy Tournament Fun Match Day', date: 'November 2025', description: 'Community gaming and networking event' },
     { src: activityImg3, title: '', date: 'November 2025', description: 'Showcasing local game developer projects and The communities Games in Pekanbaru' },
-    { src: gatheringImg, title: 'GamedevPKU Gathering', date: 'First Gathering', description: 'First official GamedevPKU community gathering' }
+    { src: gatheringImg, title: 'GamedevPKU Gathering', date: 'First Gathering', description: 'First official GamedevPKU community gathering' },
+    { src: smkVideo, title: 'Sesi Main Bareng', date: 'Mei 2026', description: 'Keseruan sesi main bareng komunitas di SMK MUDA Pekanbaru', type: 'video' },
+    { src: smkImg1, title: 'Kegiatan SMK MUDA Pekanbaru', date: 'Mei 2026', description: 'Belajar dan membuat game bersama di SMK MUDA Pekanbaru' },
+    { src: smkImg2, title: 'Kegiatan SMK MUDA Pekanbaru', date: 'Mei 2026', description: 'Diskusi pengembangan game bersama siswa-siswi' },
+    { src: smkImg3, title: 'Kegiatan SMK MUDA Pekanbaru', date: 'Mei 2026', description: 'Pemaparan materi seputar game development' },
+    { src: smkImg4, title: 'Kegiatan SMK MUDA Pekanbaru', date: 'Mei 2026', description: 'Suasana antusias di kelas game developer' },
+    { src: smkImg5, title: 'Kegiatan SMK MUDA Pekanbaru', date: 'Mei 2026', description: 'Fokus mengerjakan projek game masing-masing' }
 ]
 
 function ActivitiesSection() {
@@ -81,11 +93,22 @@ function ActivitiesSection() {
                                     style={sliderItemStyle}
                                 >
                                     <div className="relative h-[500px] overflow-hidden">
-                                        <img
-                                            src={activity.src}
-                                            alt={activity.title}
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                        />
+                                        {activity.type === 'video' ? (
+                                            <video
+                                                src={activity.src}
+                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                            />
+                                        ) : (
+                                            <img
+                                                src={activity.src}
+                                                alt={activity.title}
+                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            />
+                                        )}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                         <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                                             <h4 className="text-2xl font-bold text-white mb-2">{activity.title}</h4>

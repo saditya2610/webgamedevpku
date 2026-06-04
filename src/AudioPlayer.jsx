@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import zeldaSong from '../assets/song/Zelda\'s Lullaby - The Legend of Zelda_ Skyward Sword.mp3'
 import ffixSong from '../assets/song/FFIX - Melodies of Life (Music box) [Extended].mp3'
+import dragonQuestSong from '../assets/song/Overture - 1 - Dragon Quest III HD 2D Remake Switch OST Soundtrack.mp3'
 
 const playlist = [
     {
@@ -14,6 +15,12 @@ const playlist = [
         title: "Melodies of Life (Music box)",
         artist: "Final Fantasy IX",
         src: ffixSong
+    },
+    {
+        id: 3,
+        title: "Overture",
+        artist: "Dragon Quest III HD-2D",
+        src: dragonQuestSong
     }
 ]
 
@@ -23,7 +30,17 @@ function AudioPlayer() {
     const [duration, setDuration] = useState(0)
     const [currentSongIndex, setCurrentSongIndex] = useState(0)
     const [isExpanded, setIsExpanded] = useState(false)
+    const [volume, setVolume] = useState(() => {
+        const saved = localStorage.getItem('audioVolume');
+        return saved !== null ? parseFloat(saved) : 0.5;
+    })
     const audioRef = useRef(null)
+
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.volume = volume;
+        }
+    }, [volume]);
 
     useEffect(() => {
         const audio = audioRef.current
@@ -191,7 +208,7 @@ function AudioPlayer() {
             />
 
             <div 
-                className={`print:hidden fixed bottom-6 right-6 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-50 ${isExpanded ? 'w-[340px] h-[110px]' : 'w-14 h-14'} overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] border border-white/20 group ${isExpanded ? 'rounded-2xl bg-black/70 backdrop-blur-2xl' : 'rounded-full bg-gradient-to-tr from-cyan-600 to-purple-600 hover:scale-105 hover:shadow-[0_0_20px_rgba(6,182,212,0.6)]'}`}
+                className={`print:hidden fixed bottom-6 right-6 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-50 ${isExpanded ? 'w-[340px] h-[150px]' : 'w-14 h-14'} overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] border border-white/20 group ${isExpanded ? 'rounded-2xl bg-black/70 backdrop-blur-2xl' : 'rounded-full bg-gradient-to-tr from-cyan-600 to-purple-600 hover:scale-105 hover:shadow-[0_0_20px_rgba(6,182,212,0.6)]'}`}
                 onMouseEnter={() => setIsExpanded(true)}
                 onMouseLeave={() => setIsExpanded(false)}
             >
@@ -286,6 +303,46 @@ function AudioPlayer() {
                             ></div>
                         </div>
                         <span className="w-7 text-left font-mono">{formatTime(duration)}</span>
+                    </div>
+
+                    {/* Volume Control */}
+                    <div className="flex items-center space-x-3 mt-2 px-1">
+                        <button onClick={() => {
+                            const newVol = volume > 0 ? 0 : 0.5;
+                            setVolume(newVol);
+                            localStorage.setItem('audioVolume', newVol.toString());
+                        }} className="text-gray-400 hover:text-white transition-colors">
+                            {volume === 0 ? (
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                            ) : (
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clipRule="evenodd" /></svg>
+                            )}
+                        </button>
+                        <div className="relative flex-1 h-1 group cursor-pointer">
+                            <input 
+                                type="range" 
+                                min="0" 
+                                max="1" 
+                                step="0.01"
+                                value={volume} 
+                                onChange={(e) => {
+                                    const newVol = parseFloat(e.target.value);
+                                    setVolume(newVol);
+                                    localStorage.setItem('audioVolume', newVol.toString());
+                                }}
+                                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                            />
+                            <div className="absolute inset-0 bg-white/20 rounded-full overflow-hidden">
+                                <div 
+                                    className="h-full bg-cyan-400 rounded-full transition-all duration-100"
+                                    style={{ width: `${volume * 100}%` }}
+                                ></div>
+                            </div>
+                            <div 
+                                className="absolute top-1/2 -mt-1 w-2 h-2 bg-white rounded-full shadow-[0_0_5px_rgba(255,255,255,0.8)] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                                style={{ left: `calc(${volume * 100}% - 4px)` }}
+                            ></div>
+                        </div>
                     </div>
                 </div>
             </div>

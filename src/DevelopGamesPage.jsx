@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import nyusrukImage from '../assets/games/nyusruk.png'
 import lostEclipseImage from '../assets/games/losteclipse.jpg'
 import evalynImage from '../assets/games/evalyn.png'
@@ -12,6 +12,13 @@ import steamIcon from '../assets/iconsapp/steam.png'
 function DevelopGamesPage() {
     const [searchTerm, setSearchTerm] = useState('')
     const [selectedCategory, setSelectedCategory] = useState('all')
+    const [selectedPlatform, setSelectedPlatform] = useState('all')
+    const [currentPage, setCurrentPage] = useState(1)
+    const ITEMS_PER_PAGE = 6
+
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [searchTerm, selectedCategory, selectedPlatform])
 
     const games = [
         {
@@ -113,6 +120,33 @@ function DevelopGamesPage() {
             description: "Jadilah Apoteker Jaga Klinis di bangsal IGD! Skrining resep secepat kilat, mainkan kartu intervensi, dan cegah Medication Error sebelum terjadi dalam game simulasi klinis roguelite ini.",
             link: "https://saditya2610.itch.io/malpractice-crypt",
             image: "https://img.itch.zone/aW1nLzI3NjI5MTU5LnBuZw==/original/q9PSKW.png"
+        },
+        {
+            id: 12,
+            title: "Hell's Interior",
+            category: "indie",
+            console: "PC",
+            description: "A fast-paced first-person shooter set in the depths of hell. Survive waves of demons and escape the inferno.",
+            link: "https://fabicomm-pro.itch.io/hells-interior",
+            image: "https://img.itch.zone/aW1nLzI3NDY1MzI5LmpwZw==/original/H%2FuDAT.jpg"
+        },
+        {
+            id: 13,
+            title: "A P A R T M E N T",
+            category: "indie",
+            console: "PC",
+            description: "A psychological horror game where you explore an eerie apartment. Uncover the dark secrets hidden within its walls.",
+            link: "https://wansatari.itch.io/a-p-a-r-t-m-e-n-t",
+            image: "https://img.itch.zone/aW1nLzkxOTQ4MjQucG5n/original/QmmSX2.png"
+        },
+        {
+            id: 14,
+            title: "Lucia Journey",
+            category: "indie",
+            console: "PC",
+            description: "Join Lucia on an epic journey. A 2D adventure game filled with puzzles, combat, and an engaging storyline.",
+            steamLink: "https://store.steampowered.com/app/4505530/Lucia_Journey/",
+            image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4505530/dcc9a08d23c24783fff06d63dc31b93cc92d1d5e/capsule_616x353.jpg?t=1773365942"
         }
     ]
 
@@ -121,12 +155,30 @@ function DevelopGamesPage() {
         { value: 'indie', label: 'Indie' }
     ]
 
+    const platforms = [
+        { value: 'all', label: 'Semua Platform' },
+        { value: 'steam', label: 'Steam' },
+        { value: 'itchio', label: 'itch.io' }
+    ]
+
     const filteredGames = games.filter(game => {
         const matchesSearch = game.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
             game.description.toLowerCase().includes(searchTerm.toLowerCase())
         const matchesCategory = selectedCategory === 'all' || game.category === selectedCategory
-        return matchesSearch && matchesCategory
+        
+        let matchesPlatform = true;
+        if (selectedPlatform === 'steam') {
+            matchesPlatform = !!game.steamLink;
+        } else if (selectedPlatform === 'itchio') {
+            matchesPlatform = !!game.itchLink || (game.link && game.link.includes('itch.io'));
+        }
+
+        return matchesSearch && matchesCategory && matchesPlatform
     })
+
+    const totalPages = Math.ceil(filteredGames.length / ITEMS_PER_PAGE)
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
+    const currentGames = filteredGames.slice(startIndex, startIndex + ITEMS_PER_PAGE)
 
     return (
         <section id="develop-games" className="min-h-screen pt-32 pb-20 px-4">
@@ -148,45 +200,73 @@ function DevelopGamesPage() {
                 </div>
 
                 {/* Search and Filter */}
-                <div className="mb-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <div className="relative w-full sm:w-96">
+                <div className="mb-10 flex flex-col sm:flex-row gap-4 justify-center items-center px-2">
+                    {/* Search Input */}
+                    <div className="relative w-full sm:w-96 group">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
                         <input
                             type="text"
                             placeholder="Cari game..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full px-4 py-3 pr-10 rounded-xl border-4 border-gray-300 shadow-lg focus:outline-none focus:border-blue-500 text-gray-900 bg-white"
+                            className="relative w-full px-5 py-3.5 pl-12 rounded-2xl border-2 border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.08)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white/90 backdrop-blur-md transition-all duration-300 placeholder-gray-400 font-medium"
                         />
                         <svg
-                            className="absolute right-3 top-3.5 w-5 h-5 text-gray-400"
+                            className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors duration-300"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                            />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </div>
-                    <select
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="px-4 py-3 rounded-xl border-4 border-gray-300 shadow-lg focus:outline-none focus:border-blue-500 text-gray-900 font-medium bg-white"
-                    >
-                        {categories.map(category => (
-                            <option key={category.value} value={category.value}>
-                                {category.label}
-                            </option>
-                        ))}
-                    </select>
+
+                    {/* Category Dropdown */}
+                    <div className="relative w-full sm:w-auto group">
+                        <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
+                        <select
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                            className="appearance-none relative w-full sm:w-48 px-5 py-3.5 pr-10 rounded-2xl border-2 border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.08)] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-800 font-bold bg-white/90 backdrop-blur-md transition-all duration-300 cursor-pointer hover:bg-white"
+                        >
+                            {categories.map(category => (
+                                <option key={category.value} value={category.value} className="font-medium text-gray-800">
+                                    {category.label}
+                                </option>
+                            ))}
+                        </select>
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 group-hover:text-purple-500 transition-colors duration-300">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    {/* Platform Dropdown */}
+                    <div className="relative w-full sm:w-auto group">
+                        <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
+                        <select
+                            value={selectedPlatform}
+                            onChange={(e) => setSelectedPlatform(e.target.value)}
+                            className="appearance-none relative w-full sm:w-48 px-5 py-3.5 pr-10 rounded-2xl border-2 border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.08)] focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-800 font-bold bg-white/90 backdrop-blur-md transition-all duration-300 cursor-pointer hover:bg-white"
+                        >
+                            {platforms.map(platform => (
+                                <option key={platform.value} value={platform.value} className="font-medium text-gray-800">
+                                    {platform.label}
+                                </option>
+                            ))}
+                        </select>
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 group-hover:text-green-500 transition-colors duration-300">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Games Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                    {filteredGames.map(game => (
+                    {currentGames.map(game => (
                         <div
                             key={game.id}
                             className="bg-white rounded-2xl border-4 border-gray-300 shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
@@ -237,9 +317,19 @@ function DevelopGamesPage() {
                                             Mainkan di Steam →
                                         </a>
                                     </div>
+                                ) : game.steamLink && !game.itchLink ? (
+                                    <a
+                                        href={game.steamLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-block w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold py-3 px-6 rounded-xl uppercase tracking-wider border-2 border-blue-400 hover:from-blue-600 hover:to-blue-700 hover:scale-105 transition-all duration-300 shadow-lg text-center flex items-center justify-center gap-2"
+                                    >
+                                        <img src={steamIcon} alt="Steam" className="w-5 h-5" />
+                                        Mainkan di Steam →
+                                    </a>
                                 ) : (
                                     <a
-                                        href={game.link}
+                                        href={game.link || game.itchLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-block w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-3 px-6 rounded-xl uppercase tracking-wider border-2 border-green-400 hover:from-green-600 hover:to-green-700 hover:scale-105 transition-all duration-300 shadow-lg text-center flex items-center justify-center gap-2"
@@ -252,6 +342,56 @@ function DevelopGamesPage() {
                         </div>
                     ))}
                 </div>
+
+                {/* Pagination Controls */}
+                {totalPages > 1 && (
+                    <div className="flex justify-center items-center space-x-2 mb-12">
+                        <button
+                            onClick={() => {
+                                setCurrentPage(prev => Math.max(prev - 1, 1));
+                                window.scrollTo({ top: document.getElementById('develop-games').offsetTop, behavior: 'smooth' });
+                            }}
+                            disabled={currentPage === 1}
+                            className="px-4 py-2 rounded-lg bg-white border-2 border-gray-300 font-bold text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 transition-colors shadow-sm"
+                        >
+                            Sebelumnya
+                        </button>
+                        
+                        <div className="flex space-x-1 hidden sm:flex">
+                            {[...Array(totalPages)].map((_, i) => (
+                                <button
+                                    key={i + 1}
+                                    onClick={() => {
+                                        setCurrentPage(i + 1);
+                                        window.scrollTo({ top: document.getElementById('develop-games').offsetTop, behavior: 'smooth' });
+                                    }}
+                                    className={`w-10 h-10 rounded-lg border-2 font-bold transition-colors shadow-sm ${
+                                        currentPage === i + 1 
+                                            ? 'bg-blue-600 border-blue-600 text-white' 
+                                            : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-100'
+                                    }`}
+                                >
+                                    {i + 1}
+                                </button>
+                            ))}
+                        </div>
+
+                        <span className="sm:hidden font-bold text-gray-700 mx-2">
+                            {currentPage} / {totalPages}
+                        </span>
+
+                        <button
+                            onClick={() => {
+                                setCurrentPage(prev => Math.min(prev + 1, totalPages));
+                                window.scrollTo({ top: document.getElementById('develop-games').offsetTop, behavior: 'smooth' });
+                            }}
+                            disabled={currentPage === totalPages}
+                            className="px-4 py-2 rounded-lg bg-white border-2 border-gray-300 font-bold text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-100 transition-colors shadow-sm"
+                        >
+                            Selanjutnya
+                        </button>
+                    </div>
+                )}
 
                 {/* No Results */}
                 {filteredGames.length === 0 && (
