@@ -3,6 +3,11 @@ import zeldaSong from '../assets/song/Zelda\'s Lullaby - The Legend of Zelda_ Sk
 import ffixSong from '../assets/song/FFIX - Melodies of Life (Music box) [Extended].mp3'
 import dragonQuestSong from '../assets/song/Overture - 1 - Dragon Quest III HD 2D Remake Switch OST Soundtrack.mp3'
 import ffxSong from '../assets/song/Calm Before The Storm FINAL FANTASY X Original Soundtrack 【Audio】.mp3'
+import persona4Song from '../assets/song/Persona 4_ A Corner of Memories OST Extended.mp3'
+import stellarBladeSong from '../assets/song/Stellar Blade OST - The Song of the Sirens.mp3'
+import kh2Song from '../assets/song/Dearly Beloved KINGDOM HEARTS II Version.mp3'
+import persona5Song from '../assets/song/Have A Short Rest - Persona 5.mp3'
+import dgsSong from '../assets/song/25 _ Investigation Dai Gyakuten Saiban Soundtrack.mp3'
 
 const playlist = [
     {
@@ -28,6 +33,36 @@ const playlist = [
         title: "Calm Before The Storm",
         artist: "Final Fantasy X",
         src: ffxSong
+    },
+    {
+        id: 5,
+        title: "A Corner of Memories",
+        artist: "Persona 4",
+        src: persona4Song
+    },
+    {
+        id: 6,
+        title: "The Song of the Sirens",
+        artist: "Stellar Blade",
+        src: stellarBladeSong
+    },
+    {
+        id: 7,
+        title: "Dearly Beloved",
+        artist: "Kingdom Hearts II",
+        src: kh2Song
+    },
+    {
+        id: 8,
+        title: "Have A Short Rest",
+        artist: "Persona 5",
+        src: persona5Song
+    },
+    {
+        id: 9,
+        title: "Investigation",
+        artist: "Dai Gyakuten Saiban",
+        src: dgsSong
     }
 ]
 
