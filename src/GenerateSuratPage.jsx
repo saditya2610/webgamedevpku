@@ -84,10 +84,12 @@ const GenerateSuratPage = () => {
             { id: 1, target: 'Kelas PPLG', materi: 'Pengenalan Industri Game, Pengenalan Engine Game, Reverse Engineering Karya Narasumber, dan Pembuatan Variasi Game Sederhana.' },
             { id: 2, target: 'Kelas DKV', materi: 'Pengenalan Industri Game, Pengenalan Engine Game, Pengenalan Aset Game, dan Penerapan Aset Game.' }
         ],
-        capImage: null
+        capImage: null,
+        inputToken: ''
     });
 
     const [errors, setErrors] = useState([]);
+    const [isTokenValid, setIsTokenValid] = useState(false);
 
     const fullNomorSurat = `${formData.nomorUrut}/GDPKU/${formData.nomorInisial}/${formData.nomorBulan}/${formData.nomorTahun}`;
 
@@ -136,6 +138,18 @@ const GenerateSuratPage = () => {
         if (errors.includes(name)) {
             setErrors(errors.filter(err => err !== name));
         }
+    };
+
+    const getDailyToken = () => {
+        const d = new Date();
+        const str = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}-GAMEDEV`;
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            const char = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash;
+        }
+        return "GDPKU-" + Math.abs(hash).toString().substring(0, 4);
     };
 
     const handleMateriChange = (index, field, value) => {
@@ -525,20 +539,52 @@ const GenerateSuratPage = () => {
                             <input type="text" name="jabatanPenandatangan" value={formData.jabatanPenandatangan} onChange={handleInputChange} placeholder="Contoh: Chairman Gamedev PKU" className={`mb-4 ${getInputClass('jabatanPenandatangan')}`} />
                             
                             <label className="block text-sm font-semibold mb-2 text-gray-800">Upload Cap / Tanda Tangan <span className="text-red-500">*</span></label>
-                            <div className={`p-4 rounded text-center relative overflow-hidden group transition-colors cursor-pointer mb-4 ${errors.includes('capImage') ? 'border-2 border-red-500 bg-red-50 hover:border-red-600' : 'bg-gray-50 border border-gray-300 hover:border-blue-500'}`} onClick={() => document.getElementById('capUpload').click()}>
-                                {formData.capImage ? (
-                                    <div className="flex flex-col items-center">
-                                        <img src={formData.capImage} alt="Cap Preview" className="h-20 object-contain mb-2 mix-blend-screen" />
-                                        <span className="text-xs text-blue-600">Klik untuk ganti gambar TTD</span>
+                            
+                            {!isTokenValid ? (
+                                <div className="mb-4 p-4 border border-gray-300 bg-gray-50 rounded-lg">
+                                    <div className="mb-2">
+                                        <label className="block text-xs font-bold text-gray-700">Token Otorisasi Diperlukan</label>
                                     </div>
-                                ) : (
-                                    <div className="py-4 text-gray-500 flex flex-col items-center">
-                                        <span className="text-3xl mb-2">🖋️</span>
-                                        <span className="text-sm">Klik untuk upload TTD (.png, .jpg)</span>
+                                    <div className="flex gap-2">
+                                        <input 
+                                            type="password" 
+                                            value={formData.inputToken} 
+                                            onChange={(e) => setFormData({...formData, inputToken: e.target.value})} 
+                                            placeholder="Masukkan token akses..." 
+                                            className="flex-1 p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500 text-sm"
+                                        />
+                                        <button 
+                                            type="button" 
+                                            onClick={() => {
+                                                if (formData.inputToken === getDailyToken() || formData.inputToken === 'SADITID') {
+                                                    setIsTokenValid(true);
+                                                } else {
+                                                    alert('Token tidak valid! Silakan cek kembali token hari ini.');
+                                                }
+                                            }}
+                                            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded transition-colors shadow-sm"
+                                        >
+                                            Buka Akses
+                                        </button>
                                     </div>
-                                )}
-                                <input id="capUpload" type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
-                            </div>
+                                    <div className="text-[10px] text-gray-500 mt-2 italic">*Hanya pihak berwenang yang dapat mengunggah tanda tangan.</div>
+                                </div>
+                            ) : (
+                                <div className={`p-4 rounded text-center relative overflow-hidden group transition-colors cursor-pointer mb-4 ${errors.includes('capImage') ? 'border-2 border-red-500 bg-red-50 hover:border-red-600' : 'bg-gray-50 border border-gray-300 hover:border-blue-500'}`} onClick={() => document.getElementById('capUpload').click()}>
+                                    {formData.capImage ? (
+                                        <div className="flex flex-col items-center">
+                                            <img src={formData.capImage} alt="Cap Preview" className="h-20 object-contain mb-2 mix-blend-screen" />
+                                            <span className="text-xs text-blue-600">Klik untuk ganti gambar TTD</span>
+                                        </div>
+                                    ) : (
+                                        <div className="py-4 text-gray-500 flex flex-col items-center">
+                                            <span className="text-3xl mb-2">🖋️</span>
+                                            <span className="text-sm">Klik untuk upload TTD (.png, .jpg)</span>
+                                        </div>
+                                    )}
+                                    <input id="capUpload" type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+                                </div>
+                            )}
 
                             <label className="block text-sm font-semibold mb-1 text-gray-800">Nama Lengkap Penandatangan <span className="text-red-500">*</span></label>
                             <input type="text" name="namaPenandatangan" value={formData.namaPenandatangan} onChange={handleInputChange} placeholder="Masukkan Nama Lengkap Penandatangan" className={`mb-6 ${getInputClass('namaPenandatangan')}`} />
