@@ -3,16 +3,23 @@ import React, { useState, useEffect } from 'react';
 const GenerateTokenSuratPage = () => {
     const [token, setToken] = useState('');
     
-    useEffect(() => {
-        const d = new Date();
-        const str = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}-GAMEDEV`;
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) {
-            const char = str.charCodeAt(i);
-            hash = ((hash << 5) - hash) + char;
-            hash = hash & hash;
+    const generateNewToken = () => {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let newToken = 'GDPKU-';
+        for (let i = 0; i < 5; i++) {
+            newToken += chars.charAt(Math.floor(Math.random() * chars.length));
         }
-        setToken("GDPKU-" + Math.abs(hash).toString().substring(0, 4));
+        setToken(newToken);
+        localStorage.setItem('adminToken', newToken);
+    };
+
+    useEffect(() => {
+        const savedToken = localStorage.getItem('adminToken');
+        if (savedToken) {
+            setToken(savedToken);
+        } else {
+            generateNewToken();
+        }
     }, []);
 
     return (
@@ -30,16 +37,22 @@ const GenerateTokenSuratPage = () => {
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
                 <div className="relative bg-black/60 backdrop-blur-xl border border-white/10 p-8 sm:p-12 rounded-2xl shadow-2xl">
                     <div className="text-sm font-bold tracking-widest text-cyan-400 mb-3 uppercase flex items-center justify-center gap-2">
-                        <span>✨</span> Token Otorisasi Hari Ini <span>✨</span>
+                        <span>✨</span> Token Sekali Pakai <span>✨</span>
                     </div>
                     <div className="text-5xl sm:text-7xl font-mono font-black text-white tracking-widest selection:bg-cyan-900 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                         {token}
                     </div>
+                    <button 
+                        onClick={generateNewToken}
+                        className="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-sm font-bold text-white transition-all hover:scale-105 active:scale-95"
+                    >
+                        🔄 Generate Token Baru
+                    </button>
                 </div>
             </div>
             
             <p className="mt-12 text-xs text-gray-500 italic bg-black/20 py-2 px-4 rounded-full border border-white/5">
-                *Sistem keamanan dinamis: Token ini akan hangus dan berubah otomatis pada tengah malam.
+                *Sistem keamanan dinamis: Token ini hanya bisa digunakan satu kali. Setelah dipakai, sistem akan meresetnya secara otomatis.
             </p>
         </div>
     );
