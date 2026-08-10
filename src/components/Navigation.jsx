@@ -25,7 +25,8 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen, isActivitiesDropdownOpen, setIs
     const activitiesLinks = [
         { to: '/activities', label: 'Arsip Aktivitas' },
         { to: '/lomba', label: 'Challenge' },
-        { to: '/resource', label: 'Resource Materi' }
+        { to: '/resource', label: 'Resource Materi' },
+        { to: '/undian', label: 'Undian (Wheel)' }
     ];
 
     return (

@@ -140,6 +140,18 @@ const GenerateSuratPage = () => {
         }
     };
 
+    const getDailyToken = () => {
+        const d = new Date();
+        const str = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}-GAMEDEV`;
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            const char = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash;
+        }
+        return "GDPKU-" + Math.abs(hash).toString().substring(0, 4);
+    };
+
     const handleMateriChange = (index, field, value) => {
         const newMateri = [...formData.materi];
         newMateri[index][field] = value;
@@ -544,19 +556,12 @@ const GenerateSuratPage = () => {
                                         <button 
                                             type="button" 
                                             onClick={() => {
-                                                const currentToken = localStorage.getItem('adminToken');
-                                                if ((currentToken && formData.inputToken === currentToken) || formData.inputToken === 'SADITID') {
+                                                const currentToken = getDailyToken();
+                                                const userInput = (formData.inputToken || '').trim();
+                                                if (userInput === currentToken || userInput === 'SADITID') {
                                                     setIsTokenValid(true);
-                                                    
-                                                    // Invalidate token by generating a new one
-                                                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                                                    let newToken = 'GDPKU-';
-                                                    for (let i = 0; i < 5; i++) {
-                                                        newToken += chars.charAt(Math.floor(Math.random() * chars.length));
-                                                    }
-                                                    localStorage.setItem('adminToken', newToken);
                                                 } else {
-                                                    alert('Token tidak valid atau sudah digunakan!');
+                                                    alert('Token tidak valid! Silakan cek kembali token otorisasi hari ini.');
                                                 }
                                             }}
                                             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded transition-colors shadow-sm"
