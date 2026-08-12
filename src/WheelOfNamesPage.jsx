@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GRADIENTS } from './constants/styles';
+import victorySound from '../assets/song/Final Fantasy Victory Fanfare - Sound Effect [HQ].mp3';
 
 const COLORS = [
     '#f87171', // red-400
@@ -16,8 +17,10 @@ const WheelOfNamesPage = () => {
     const [names, setNames] = useState("Siswa 1\nSiswa 2\nSiswa 3\nSiswa 4\nSiswa 5\nSiswa 6");
     const [isSpinning, setIsSpinning] = useState(false);
     const [winner, setWinner] = useState(null);
+    const [pastWinners, setPastWinners] = useState([]);
 
     const canvasRef = useRef(null);
+    const audioRef = useRef(null);
     const namesList = names.split('\n').map(n => n.trim()).filter(n => n !== '');
 
     // Physics/Animation state refs
@@ -159,8 +162,18 @@ const WheelOfNamesPage = () => {
 
                 const arcSize = (2 * Math.PI) / namesList.length;
                 const winningIndex = Math.floor(pointerAngle / arcSize);
+                
+                const winnerName = namesList[winningIndex];
 
-                setWinner(namesList[winningIndex]);
+                setWinner(winnerName);
+                setPastWinners(prev => [...prev, winnerName]);
+                
+                if (audioRef.current) {
+                    audioRef.current.pause();
+                    audioRef.current.currentTime = 0;
+                }
+                audioRef.current = new Audio(victorySound);
+                audioRef.current.play().catch(e => console.error("Error playing sound:", e));
             }
         }
 
@@ -189,6 +202,18 @@ const WheelOfNamesPage = () => {
             const newNamesList = namesList.filter(n => n !== winner);
             setNames(newNamesList.join('\n'));
             setWinner(null);
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current.currentTime = 0;
+            }
+        }
+    };
+
+    const closeModal = () => {
+        setWinner(null);
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
         }
     };
 
@@ -268,6 +293,33 @@ const WheelOfNamesPage = () => {
                             </button>
                         </div>
                     </div>
+
+                    {/* Winners Section */}
+                    {pastWinners.length > 0 && (
+                        <div className="w-full lg:w-72 bg-blue-950/80 p-6 rounded-xl border-2 border-yellow-500 backdrop-blur-sm shadow-xl flex flex-col h-[500px]">
+                            <div className="flex justify-between items-center mb-4">
+                                <h2 className="text-xl font-bold text-yellow-400 uppercase tracking-widest">Pemenang</h2>
+                                <span className="bg-yellow-500/20 text-yellow-400 text-xs font-bold px-3 py-1 rounded-full border border-yellow-500/50">
+                                    {pastWinners.length}
+                                </span>
+                            </div>
+                            <div className="flex-grow overflow-y-auto pr-2 space-y-2">
+                                {pastWinners.map((w, i) => (
+                                    <div key={i} className="bg-yellow-500/10 border border-yellow-500/30 text-yellow-100 p-3 rounded font-medium shadow-sm flex items-center gap-3">
+                                        <span className="text-yellow-400 font-bold text-lg">{i + 1}.</span>
+                                        <span className="truncate" title={w}>{w}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <button
+                                onClick={() => setPastWinners([])}
+                                disabled={isSpinning}
+                                className="mt-4 w-full bg-red-900/80 hover:bg-red-800 text-white font-bold py-2 px-4 rounded border border-red-700 transition-colors text-sm"
+                            >
+                                Hapus Riwayat
+                            </button>
+                        </div>
+                    )}
                 </div>
 
                 {/* Winner Modal */}
@@ -291,7 +343,7 @@ const WheelOfNamesPage = () => {
                                     Hapus Pemenang & Tutup
                                 </button>
                                 <button
-                                    onClick={() => setWinner(null)}
+                                    onClick={closeModal}
                                     className="w-full bg-blue-700 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg uppercase tracking-wider border-b-4 border-blue-900 active:border-b-0 active:translate-y-1 transition-all"
                                 >
                                     Tutup
