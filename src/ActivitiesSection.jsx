@@ -14,6 +14,8 @@ import smkImg4 from '../assets/SMKMUDA/IMG_20260520_121927.webp'
 import smkImg5 from '../assets/SMKMUDA/IMG_20260521_081925.webp'
 import gathering3rdImg1 from '../assets/gathering3rd/IMG-20260308-WA0054.webp'
 import gathering3rdImg2 from '../assets/gathering3rd/IMG-20260308-WA0087.webp'
+import abdurrabImg1 from '../assets/Abdurrab/kuliah_umum (1).png'
+import abdurrabImg2 from '../assets/Abdurrab/kuliah_umum (2).png'
 
 const activityData = [
     { src: activityImg1, title: 'GamedevPKU x Umamusume Pekanbaru', date: 'November 2025', description: '2nd Gathering GamedevPKU collabs with Uma Musume and Other Communities games' },
@@ -27,7 +29,9 @@ const activityData = [
     { src: smkImg4, title: 'Kegiatan SMK MUDA Pekanbaru', date: 'Mei 2026', description: 'Suasana antusias di kelas game developer' },
     { src: smkImg5, title: 'Kegiatan SMK MUDA Pekanbaru', date: 'Mei 2026', description: 'Fokus mengerjakan projek game masing-masing' },
     { src: gathering3rdImg1, title: '3rd Gathering GamedevPKU', date: 'Maret 2026', description: 'Keseruan kumpul bareng anggota di gathering ketiga GamedevPKU' },
-    { src: gathering3rdImg2, title: '3rd Gathering GamedevPKU', date: 'Maret 2026', description: 'Diskusi dan sharing session di gathering ketiga' }
+    { src: gathering3rdImg2, title: '3rd Gathering GamedevPKU', date: 'Maret 2026', description: 'Diskusi dan sharing session di gathering ketiga' },
+    { src: abdurrabImg1, title: 'Kuliah Umum Univ. Abdurrab', date: 'Agustus 2026', description: 'Pemaparan materi dan sharing session di Universitas Abdurrab' },
+    { src: abdurrabImg2, title: 'Kuliah Umum Univ. Abdurrab', date: 'Agustus 2026', description: 'Antusiasme peserta kuliah umum game development di Universitas Abdurrab' }
 ]
 
 function ActivitiesSection() {
