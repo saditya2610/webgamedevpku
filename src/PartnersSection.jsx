@@ -6,7 +6,7 @@ import nakamaLogo from '../assets/nakamalogo.jpg'
 import projectSekaiLogo from '../assets/projectsekailogo.png'
 import redblackLogo from '../assets/Red Black Full.png'
 import reieclipseLogo from '../assets/reieclipse.png'
-import solutronicLogo from '../assets/solutroniclogo.png'
+
 import umamusumeLogo from '../assets/umamusumepku.png'
 import umamusumeSumateraLogo from '../assets/umamusumesumatera.png'
 import baletiamLogo from '../assets/baletiam.jpg'
@@ -73,13 +73,7 @@ function PartnersSection() {
                             className="h-10 sm:h-12 md:h-16 w-auto object-contain mx-auto"
                         />
                     </div>
-                    <div className="p-3 sm:p-4 md:p-6 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        <img
-                            src={solutronicLogo}
-                            alt="Solutronic"
-                            className="h-10 sm:h-12 md:h-16 w-auto object-contain mx-auto"
-                        />
-                    </div>
+
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 items-center justify-items-center">
                     <div className="p-3 sm:p-4 md:p-6 rounded-xl bg-white border-2 border-gray-200 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
