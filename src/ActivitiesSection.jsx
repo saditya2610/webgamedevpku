@@ -30,8 +30,8 @@ const activityData = [
     { src: smkImg5, title: 'Kegiatan SMK MUDA Pekanbaru', date: 'Mei 2026', description: 'Fokus mengerjakan projek game masing-masing' },
     { src: gathering3rdImg1, title: '3rd Gathering GamedevPKU', date: 'Maret 2026', description: 'Keseruan kumpul bareng anggota di gathering ketiga GamedevPKU' },
     { src: gathering3rdImg2, title: '3rd Gathering GamedevPKU', date: 'Maret 2026', description: 'Diskusi dan sharing session di gathering ketiga' },
-    { src: abdurrabImg1, title: 'Kuliah Umum Univ. Abdurrab', date: 'Agustus 2026', description: 'Pemaparan materi dan sharing session di Universitas Abdurrab' },
-    { src: abdurrabImg2, title: 'Kuliah Umum Univ. Abdurrab', date: 'Agustus 2026', description: 'Antusiasme peserta kuliah umum game development di Universitas Abdurrab' }
+    { src: abdurrabImg1, title: 'Kuliah Umum Univ. Abdurrab', date: 'Juni 2026', description: 'Pemaparan materi dan sharing session di Universitas Abdurrab' },
+    { src: abdurrabImg2, title: 'Kuliah Umum Univ. Abdurrab', date: 'Juni 2026', description: 'Antusiasme peserta kuliah umum game development di Universitas Abdurrab' }
 ]
 
 function ActivitiesSection() {
